@@ -1,0 +1,17 @@
+[
+  {
+    "name": "bottom_nav_graph",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "nav_graph",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "parent_dashboard_navigation",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  }
+]

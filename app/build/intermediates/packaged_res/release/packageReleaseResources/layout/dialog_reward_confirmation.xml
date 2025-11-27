@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/imageRewardIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_gift"
+            android:tint="@color/primary"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/textDialogTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Confirm Redemption"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/on_surface" />
+
+    </LinearLayout>
+
+    <!-- Reward Details -->
+    <TextView
+        android:id="@+id/textRewardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/on_surface"
+        tools:text="100MB Data Pack" />
+
+    <TextView
+        android:id="@+id/textRewardDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/on_surface"
+        android:alpha="0.7"
+        tools:text="Get 100MB of high-speed internet data" />
+
+    <!-- Cost Information -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_info_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/textRewardCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/accent"
+            tools:text="Cost: 500 Points" />
+
+        <TextView
+            android:id="@+id/textBalanceAfter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/on_surface"
+            android:alpha="0.8"
+            tools:text="Balance after redemption: 750 Points" />
+
+    </LinearLayout>
+
+    <!-- Approval Note -->
+    <TextView
+        android:id="@+id/textApprovalNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="12sp"
+        android:textColor="@color/warning"
+        android:background="@drawable/rounded_warning_background"
+        android:padding="8dp"
+        android:visibility="gone"
+        tools:text="⚠️ This reward requires parent approval. You'll receive a notification once approved."
+        tools:visibility="visible" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Cancel"
+            android:textColor="@color/on_surface" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Redeem Now"
+            app:backgroundTint="@color/primary"
+            android:textColor="@color/on_primary" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/margin_large"
+    android:background="@drawable/porapoints_background">
+
+    <!-- Porapoints Icon -->
+    <ImageView
+        android:id="@+id/imgPorapointsIcon"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/porapoints_icon"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:contentDescription="Porapoints reward icon"
+        android:scaleType="centerInside" />
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Earn Porapoints!"
+        android:textAppearance="@style/TextAppearance.Porakhela.Headline1"
+        android:textColor="@color/primary_blue"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margin_medium" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Learn → Earn → Redeem"
+        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+        android:textColor="@color/accent_yellow"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margin_large" />
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complete lessons to earn Porapoints! Redeem them for real rewards and exciting surprises. Learning has never been this rewarding!"
+        android:textAppearance="@style/TextAppearance.Porakhela.Body1"
+        android:textColor="@color/gray_dark"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp" />
+
+</LinearLayout>

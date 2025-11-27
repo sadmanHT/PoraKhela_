@@ -1,0 +1,122 @@
+[
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/dialog_reward_confirmation.xml",
+        "source": "com.porakhela.app-main-65:/layout/dialog_reward_confirmation.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_lesson_player.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_lesson_player.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_lessons.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_lessons.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_onboarding_porapoints.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_porapoints.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/item_reward_card.xml",
+        "source": "com.porakhela.app-main-65:/layout/item_reward_card.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_subject_category.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_subject_category.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_onboarding.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_onboarding.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_leaderboard_tab.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_leaderboard_tab.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_onboarding_consent.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_consent.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_onboarding.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_parent_dashboard.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_parent_dashboard.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_parent_dashboard.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_parent_dashboard.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_parent.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_parent.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_ussd_simulation.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_ussd_simulation.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/dialog_developer_tools.xml",
+        "source": "com.porakhela.app-main-65:/layout/dialog_developer_tools.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_lesson_completion.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_lesson_completion.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_main.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_onboarding_welcome.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_welcome.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/item_category_card.xml",
+        "source": "com.porakhela.app-main-65:/layout/item_category_card.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_ussd_launcher.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_ussd_launcher.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_leaderboard.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_leaderboard.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_onboarding_gamification.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_gamification.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_parent_pin_auth.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_parent_pin_auth.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/item_daily_report.xml",
+        "source": "com.porakhela.app-main-65:/layout/item_daily_report.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_profile.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_rewards_center.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_rewards_center.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/activity_splash.xml",
+        "source": "com.porakhela.app-main-65:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_home.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/item_leaderboard_entry.xml",
+        "source": "com.porakhela.app-main-65:/layout/item_leaderboard_entry.xml"
+    },
+    {
+        "merged": "com.porakhela.app-mergeDebugResources-62:/layout/fragment_rewards.xml",
+        "source": "com.porakhela.app-main-65:/layout/fragment_rewards.xml"
+    }
+]

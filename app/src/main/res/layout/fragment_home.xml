@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_medium">
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_header_background"
+            android:padding="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_large">
+
+            <!-- Welcome Message -->
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi, Learner!"
+                android:textAppearance="@style/TextAppearance.Porakhela.Headline1"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:layout_marginBottom="@dimen/margin_medium" />
+
+            <!-- Stats Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Porapoints Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_stats_card"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Porapoints"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+                        android:textColor="@color/on_surface"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_porapoints_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/accent_yellow"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Daily Streak Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_stats_card"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily Streak"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_current_streak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current Streak: 0 days"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            
+            <!-- Streak Information Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <!-- Learning Time Today -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_stats_card"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learning Time"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_learning_time_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today's Learning Time: 0s"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/accent_color"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <!-- Streak Message -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_stats_card"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Motivation"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_streak_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start your learning streak today!"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Body1"
+                        android:textColor="@color/success_color"
+                        android:textSize="14sp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            
+        <!-- Warning message for date manipulation -->
+        <TextView
+            android:id="@+id/tv_warning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠️ Date manipulation detected. Streak updates frozen."
+            android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+            android:textColor="@color/error_color"
+            android:background="@drawable/rounded_warning_background"
+            android:padding="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Subject Cards Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a Subject"
+            android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+            android:textColor="@color/on_surface"
+            android:textSize="22sp"
+            android:layout_marginBottom="@dimen/margin_large" />
+
+        <!-- Subject Cards Grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Top Row: Math & English -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/margin_medium">
+
+                <!-- Math Card -->
+                <LinearLayout
+                    android:id="@+id/card_math"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/subject_card_math"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔢"
+                        android:textSize="32sp"
+                        android:layout_marginBottom="@dimen/margin_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Math"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- English Card -->
+                <LinearLayout
+                    android:id="@+id/card_english"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/subject_card_english"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📚"
+                        android:textSize="32sp"
+                        android:layout_marginBottom="@dimen/margin_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="English"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Bottom Row: Science & Social Studies -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Science Card -->
+                <LinearLayout
+                    android:id="@+id/card_science"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/subject_card_science"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔬"
+                        android:textSize="32sp"
+                        android:layout_marginBottom="@dimen/margin_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Science"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Social Studies Card -->
+                <LinearLayout
+                    android:id="@+id/card_social_studies"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/subject_card_social"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌍"
+                        android:textSize="32sp"
+                        android:layout_marginBottom="@dimen/margin_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Social Studies"
+                        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

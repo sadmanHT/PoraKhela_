@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_medium">
+
+    <LinearLayout
+        android:id="@+id/category_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_category_card"
+        android:padding="@dimen/margin_large"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:minHeight="80dp">
+
+        <!-- Category Icon -->
+        <TextView
+            android:id="@+id/tv_category_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📚"
+            android:textSize="40sp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_gravity="center_vertical" />
+
+        <!-- Category Content -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <!-- Category Name -->
+            <TextView
+                android:id="@+id/tv_category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category Name"
+                android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/margin_small" />
+
+            <!-- Category Description -->
+            <TextView
+                android:id="@+id/tv_category_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category description goes here"
+                android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:alpha="0.9"
+                android:layout_marginBottom="@dimen/margin_small" />
+
+            <!-- Lesson Count -->
+            <TextView
+                android:id="@+id/tv_lesson_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 lessons"
+                android:textAppearance="@style/TextAppearance.Porakhela.Body2"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:alpha="0.8" />
+
+        </LinearLayout>
+
+        <!-- Arrow Icon -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="▶"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"
+            android:alpha="0.8" />
+
+    </LinearLayout>
+
+</LinearLayout>

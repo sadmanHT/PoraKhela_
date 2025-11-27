@@ -1,0 +1,39 @@
+{
+  "id": "science_animals",
+  "subject": "Science",
+  "level": "Elementary",
+  "title": "Animal Facts",
+  "description": "Learn interesting facts about animals and their habitats",
+  "questions": [
+    {
+      "question_text": "Which animal is known as the 'King of the Jungle'?",
+      "options": ["Tiger", "Lion", "Elephant", "Bear"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "What do pandas mainly eat?",
+      "options": ["Fish", "Meat", "Bamboo", "Fruits"],
+      "correct_option": 2
+    },
+    {
+      "question_text": "Which bird cannot fly?",
+      "options": ["Eagle", "Penguin", "Sparrow", "Parrot"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "How many legs does a spider have?",
+      "options": ["6", "8", "10", "12"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "Which animal is the tallest in the world?",
+      "options": ["Elephant", "Camel", "Giraffe", "Horse"],
+      "correct_option": 2
+    },
+    {
+      "question_text": "What do bees make?",
+      "options": ["Milk", "Honey", "Butter", "Cheese"],
+      "correct_option": 1
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "subject": "science",
+  "displayName": "Science Explorers",
+  "description": "Discover the amazing world around us!",
+  "iconEmoji": "🔬",
+  "colorHex": "#4facfe",
+  "categories": [
+    {
+      "id": "science_animals",
+      "name": "Animals & Nature",
+      "description": "Learn about different animals and their homes",
+      "iconEmoji": "🐾",
+      "colorHex": "#4facfe",
+      "lessons": [
+        {
+          "id": "farm_animals",
+          "title": "Farm Animals",
+          "description": "Meet cows, pigs, chickens, and more",
+          "type": "VIDEO_LESSON",
+          "difficulty": "EASY",
+          "estimatedMinutes": 8,
+          "porapointsReward": 70
+        },
+        {
+          "id": "animal_sounds",
+          "title": "Animal Sounds",
+          "description": "What sounds do animals make?",
+          "type": "INTERACTIVE_GAME",
+          "difficulty": "EASY",
+          "estimatedMinutes": 6,
+          "porapointsReward": 50
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    },
+    {
+      "id": "science_plants",
+      "name": "Plants & Trees",
+      "description": "Explore the green world of plants",
+      "iconEmoji": "🌱",
+      "colorHex": "#00f2fe",
+      "lessons": [
+        {
+          "id": "how_plants_grow",
+          "title": "How Plants Grow",
+          "description": "From seed to flower - the plant journey",
+          "type": "VIDEO_LESSON",
+          "difficulty": "MEDIUM",
+          "estimatedMinutes": 12,
+          "porapointsReward": 100
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    },
+    {
+      "id": "science_weather",
+      "name": "Weather Wonders",
+      "description": "Sunny, rainy, snowy - understand weather",
+      "iconEmoji": "🌤️",
+      "colorHex": "#74b9ff",
+      "lessons": [
+        {
+          "id": "types_of_weather",
+          "title": "Types of Weather",
+          "description": "Learn about sun, rain, snow, and wind",
+          "type": "INTERACTIVE_GAME",
+          "difficulty": "EASY",
+          "estimatedMinutes": 10,
+          "porapointsReward": 80
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "english_vocabulary",
+  "subject": "English",
+  "level": "Elementary",
+  "title": "Basic Vocabulary",
+  "description": "Learn and practice common English words",
+  "questions": [
+    {
+      "question_text": "What is the opposite of 'hot'?",
+      "options": ["Warm", "Cold", "Cool", "Freezing"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "Which word means 'very big'?",
+      "options": ["Tiny", "Small", "Large", "Huge"],
+      "correct_option": 3
+    },
+    {
+      "question_text": "What do you call a baby cat?",
+      "options": ["Puppy", "Kitten", "Cub", "Chick"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "Which word rhymes with 'cat'?",
+      "options": ["Dog", "Hat", "Fish", "Bird"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "What is the plural of 'child'?",
+      "options": ["Childs", "Children", "Childes", "Child"],
+      "correct_option": 1
+    },
+    {
+      "question_text": "Which word means 'happy'?",
+      "options": ["Sad", "Angry", "Joyful", "Tired"],
+      "correct_option": 2
+    }
+  ]
+}

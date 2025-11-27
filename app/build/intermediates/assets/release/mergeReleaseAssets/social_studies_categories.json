@@ -1,0 +1,78 @@
+{
+  "subject": "social_studies",
+  "displayName": "Social Studies",
+  "description": "Learn about people, places, and communities!",
+  "iconEmoji": "🌍",
+  "colorHex": "#fa709a",
+  "categories": [
+    {
+      "id": "social_community",
+      "name": "My Community",
+      "description": "Learn about your neighborhood and helpers",
+      "iconEmoji": "🏠",
+      "colorHex": "#fa709a",
+      "lessons": [
+        {
+          "id": "community_helpers",
+          "title": "Community Helpers",
+          "description": "Meet doctors, firefighters, teachers, and more",
+          "type": "VIDEO_LESSON",
+          "difficulty": "EASY",
+          "estimatedMinutes": 10,
+          "porapointsReward": 85
+        },
+        {
+          "id": "my_family",
+          "title": "My Family",
+          "description": "Learn about family members and their roles",
+          "type": "INTERACTIVE_GAME",
+          "difficulty": "EASY",
+          "estimatedMinutes": 8,
+          "porapointsReward": 60
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    },
+    {
+      "id": "social_geography",
+      "name": "Places & Maps",
+      "description": "Explore different places and simple maps",
+      "iconEmoji": "🗺️",
+      "colorHex": "#fee140",
+      "lessons": [
+        {
+          "id": "my_school",
+          "title": "My School",
+          "description": "Learn about different rooms in your school",
+          "type": "INTERACTIVE_GAME",
+          "difficulty": "EASY",
+          "estimatedMinutes": 7,
+          "porapointsReward": 55
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    },
+    {
+      "id": "social_culture",
+      "name": "Festivals & Traditions",
+      "description": "Celebrate different festivals and traditions",
+      "iconEmoji": "🎉",
+      "colorHex": "#fdcb6e",
+      "lessons": [
+        {
+          "id": "festivals_of_bangladesh",
+          "title": "Festivals of Bangladesh",
+          "description": "Learn about Eid, Durga Puja, and Pohela Boishakh",
+          "type": "STORY",
+          "difficulty": "MEDIUM",
+          "estimatedMinutes": 15,
+          "porapointsReward": 120
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    }
+  ]
+}

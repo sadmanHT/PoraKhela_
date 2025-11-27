@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- PIN Button Style -->
+    <style name="PinButtonStyle" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="strokeColor">@color/gray_light</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="rippleColor">@color/primary_color_light</item>
+    </style>
+
+    <!-- Parent Dashboard Card Style -->
+    <style name="ParentDashboardCardStyle">
+        <item name="cardCornerRadius">@dimen/corner_radius_medium</item>
+        <item name="cardElevation">@dimen/elevation_small</item>
+        <item name="android:layout_marginBottom">@dimen/margin_medium</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+    <!-- Parent Dashboard Section Title Style -->
+    <style name="ParentSectionTitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:layout_marginBottom">@dimen/margin_medium</item>
+    </style>
+
+    <!-- Parent Dashboard Data Text Style -->
+    <style name="ParentDataTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:layout_marginBottom">@dimen/margin_tiny</item>
+    </style>
+
+    <!-- Parent Dashboard Value Text Style -->
+    <style name="ParentValueTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+</resources>

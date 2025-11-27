@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Home Fragment - Main Dashboard -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.porakhela.ui.home.HomeFragment"
+        android:label="Home">
+        
+        <action
+            android:id="@+id/action_home_to_subject_category"
+            app:destination="@id/subjectCategoryFragment" />
+            
+    </fragment>
+
+    <!-- Subject Category Fragment -->
+    <fragment
+        android:id="@+id/subjectCategoryFragment"
+        android:name="com.porakhela.ui.subject.SubjectCategoryFragment"
+        android:label="Subject Categories">
+        
+        <argument
+            android:name="subject"
+            app:argType="string" />
+            
+        <action
+            android:id="@+id/action_subject_category_to_lesson_player"
+            app:destination="@id/lessonPlayerFragment" />
+            
+    </fragment>
+
+    <!-- Lesson Player Fragment -->
+    <fragment
+        android:id="@+id/lessonPlayerFragment"
+        android:name="com.porakhela.ui.lesson.LessonPlayerFragment"
+        android:label="Lesson Player">
+        
+        <argument
+            android:name="lessonId"
+            app:argType="string" />
+            
+        <action
+            android:id="@+id/action_lesson_player_to_completion"
+            app:destination="@id/lessonCompletionFragment" />
+            
+    </fragment>
+
+    <!-- Lesson Completion Fragment -->
+    <fragment
+        android:id="@+id/lessonCompletionFragment"
+        android:name="com.porakhela.ui.lesson.LessonCompletionFragment"
+        android:label="Lesson Complete">
+        
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer" />
+            
+        <argument
+            android:name="totalQuestions"
+            app:argType="integer" />
+            
+        <argument
+            android:name="porapointsEarned"
+            app:argType="integer" />
+            
+        <argument
+            android:name="timeTakenMs"
+            app:argType="long" />
+            
+    </fragment>
+
+    <!-- Onboarding Fragment (for reference) -->
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.porakhela.ui.onboarding.OnboardingFragment"
+        android:label="Onboarding" />
+
+    <!-- Leaderboard Fragment -->
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.porakhela.ui.leaderboard.LeaderboardFragment"
+        android:label="Leaderboard" />
+
+</navigation>

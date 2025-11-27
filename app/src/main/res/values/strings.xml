@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Porakhela</string>
+    
+    <!-- Main Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_lessons">Lessons</string>
+    <string name="nav_rewards">Rewards</string>
+    <string name="nav_leaderboard">Leaderboard</string>
+    <string name="nav_profile">Profile</string>
+    
+    <!-- Splash Screen -->
+    <string name="splash_welcome">Welcome to Porakhela!</string>
+    <string name="splash_subtitle">Let\'s learn English together!</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title">Start Your English Journey</string>
+    <string name="onboarding_description">Learn English through fun games and earn Porapoints!</string>
+    <string name="onboarding_get_started">Get Started</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">Hello, Learner!</string>
+    <string name="home_subtitle">Ready for today\'s adventure?</string>
+    <string name="home_porapoints">Porapoints</string>
+    <string name="home_continue_learning">Continue Learning</string>
+    
+    <!-- Lessons Screen -->
+    <string name="lessons_title">English Lessons</string>
+    <string name="lessons_subtitle">Choose your learning path</string>
+    
+    <!-- Rewards Screen -->
+    <string name="rewards_title">Your Rewards</string>
+    <string name="rewards_subtitle">Check your Porapoints and achievements</string>
+    <string name="rewards_total_points">Total Porapoints</string>
+    
+    <!-- Profile Screen -->
+    <string name="profile_title">My Profile</string>
+    <string name="profile_settings">Settings</string>
+    <string name="profile_parent_zone">Parent Zone</string>
+    <string name="profile_help">Help &amp; Support</string>
+    
+    <!-- Parent Dashboard -->
+    <string name="parent_dashboard">Parent Dashboard</string>
+    <string name="parent_pin_auth_title">Parent Authentication</string>
+    <string name="parent_pin_create_title">Create Parent PIN</string>
+    <string name="parent_pin_create_subtitle">Enter a 4-digit PIN to secure your parent dashboard</string>
+    <string name="parent_pin_enter_title">Parent Dashboard</string>
+    <string name="parent_pin_enter_subtitle">Enter your 4-digit PIN</string>
+    <string name="parent_pin_error">Incorrect PIN. Try again.</string>
+    <string name="parent_pin_cooldown">Try again in %d seconds</string>
+    <string name="parent_dashboard_welcome">Welcome to Parent Dashboard</string>
+    <string name="parent_child_progress">Child Progress</string>
+    <string name="parent_screen_time">Screen Time Control</string>
+    <string name="parent_learning_reports">Learning Reports</string>
+    <string name="parent_redemption_approval">Redemption Approval</string>
+    <string name="parent_logout">Logout</string>
+    <string name="parent_screen_time_minutes">%d minutes</string>
+    <string name="parent_lessons_completed">Lessons completed today</string>
+    <string name="parent_points_earned">Points earned today</string>
+    <string name="parent_time_spent">Time spent learning</string>
+    <string name="parent_require_approval">Require approval for redemptions</string>
+    <string name="parent_daily_report">Daily Report - %s</string>
+    <string name="parent_no_reports">No learning reports available</string>
+    
+    <!-- Common -->
+    <string name="loading">Loading...</string>
+    <string name="error_general">Oops! Something went wrong.</string>
+    <string name="try_again">Try Again</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Accessibility -->
+    <string name="content_description_logo">Porakhela logo</string>
+    <string name="content_description_back_button">Go back</string>
+    <string name="content_description_menu_button">Open menu</string>
+    
+    <!-- Leaderboard System -->
+    <string name="leaderboard_title">Leaderboard</string>
+    <string name="leaderboard_weekly">Weekly</string>
+    <string name="leaderboard_monthly">Monthly</string>
+    <string name="leaderboard_global">Global</string>
+    
+    <string name="current_rank_format">Rank: #%d</string>
+    <string name="points_format">%,d points</string>
+    <string name="user_avatar">User avatar</string>
+    <string name="trophy">Trophy</string>
+    <string name="current_user">Current user</string>
+    <string name="rank_change">Rank change indicator</string>
+    <string name="crown_icon">Crown icon</string>
+    
+    <string name="empty_weekly_leaderboard">No Weekly Rankings Yet</string>
+    <string name="empty_monthly_leaderboard">No Monthly Rankings Yet</string>
+    <string name="empty_global_leaderboard">No Global Rankings Yet</string>
+    <string name="empty_leaderboard">Empty leaderboard</string>
+    <string name="empty_leaderboard_message">Complete lessons and earn points\\nto appear on the leaderboard!</string>
+    
+    <string name="retry">Retry</string>
+</resources>

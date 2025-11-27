@@ -1,0 +1,78 @@
+{
+  "subject": "english",
+  "displayName": "English Language",
+  "description": "Reading, writing, and speaking adventures!",
+  "iconEmoji": "📚",
+  "colorHex": "#f093fb",
+  "categories": [
+    {
+      "id": "english_alphabet",
+      "name": "Alphabet Adventures",
+      "description": "Learn letters from A to Z",
+      "iconEmoji": "🔤",
+      "colorHex": "#f093fb",
+      "lessons": [
+        {
+          "id": "letter_recognition",
+          "title": "Letter Recognition",
+          "description": "Identify uppercase and lowercase letters",
+          "type": "INTERACTIVE_GAME",
+          "difficulty": "EASY",
+          "estimatedMinutes": 10,
+          "porapointsReward": 60
+        },
+        {
+          "id": "alphabet_song",
+          "title": "Alphabet Song",
+          "description": "Sing along with the alphabet",
+          "type": "VIDEO_LESSON",
+          "difficulty": "EASY",
+          "estimatedMinutes": 5,
+          "porapointsReward": 40
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    },
+    {
+      "id": "english_phonics",
+      "name": "Phonics Fun",
+      "description": "Learn letter sounds and simple words",
+      "iconEmoji": "🗣️",
+      "colorHex": "#f5576c",
+      "lessons": [
+        {
+          "id": "letter_sounds",
+          "title": "Letter Sounds",
+          "description": "Learn what sounds each letter makes",
+          "type": "INTERACTIVE_GAME",
+          "difficulty": "MEDIUM",
+          "estimatedMinutes": 12,
+          "porapointsReward": 90
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    },
+    {
+      "id": "english_reading",
+      "name": "Reading Stories",
+      "description": "Explore exciting stories and books",
+      "iconEmoji": "📖",
+      "colorHex": "#a8e6cf",
+      "lessons": [
+        {
+          "id": "simple_words",
+          "title": "Simple Words",
+          "description": "Read your first words: cat, dog, sun",
+          "type": "STORY",
+          "difficulty": "EASY",
+          "estimatedMinutes": 15,
+          "porapointsReward": 120
+        }
+      ],
+      "isLocked": false,
+      "requiredLevel": 1
+    }
+  ]
+}

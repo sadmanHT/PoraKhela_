@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/margin_large"
+    android:background="@drawable/welcome_background">
+
+    <!-- Animated Logo/Character -->
+    <ImageView
+        android:id="@+id/imgWelcomeCharacter"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/welcome_character"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:contentDescription="Welcome character"
+        android:scaleType="centerInside" />
+
+    <!-- Welcome Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Porakhela"
+        android:textAppearance="@style/TextAppearance.Porakhela.Headline1"
+        android:textColor="@color/primary_blue"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margin_medium" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Learning Becomes Play!"
+        android:textAppearance="@style/TextAppearance.Porakhela.Headline2"
+        android:textColor="@color/accent_yellow"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margin_large" />
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transform screen time into quality learning time with fun, engaging English lessons designed just for kids!"
+        android:textAppearance="@style/TextAppearance.Porakhela.Body1"
+        android:textColor="@color/gray_dark"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp" />
+
+</LinearLayout>

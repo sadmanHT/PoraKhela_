@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.porakhela.app-mergeReleaseResources-60:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\shtpr\\.gradle\\caches\\transforms-3\\c9df59f2e51e6d214c93dea2a25dbc52\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

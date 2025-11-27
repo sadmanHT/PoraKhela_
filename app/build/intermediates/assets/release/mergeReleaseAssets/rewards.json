@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "100MB Data Pack",
+    "description": "Get 100MB of high-speed internet data for your mobile",
+    "cost": 500,
+    "icon": "ic_data_pack",
+    "category": "data",
+    "approval_required": true,
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "৳50 Talktime",
+    "description": "Add ৳50 balance to your mobile account",
+    "cost": 1000,
+    "icon": "ic_talktime",
+    "category": "talktime",
+    "approval_required": true,
+    "available": true
+  },
+  {
+    "id": 3,
+    "name": "500MB Data Pack",
+    "description": "Get 500MB of high-speed internet data for your mobile",
+    "cost": 2000,
+    "icon": "ic_data_pack",
+    "category": "data",
+    "approval_required": true,
+    "available": true
+  },
+  {
+    "id": 4,
+    "name": "৳100 Talktime",
+    "description": "Add ৳100 balance to your mobile account",
+    "cost": 1800,
+    "icon": "ic_talktime",
+    "category": "talktime",
+    "approval_required": true,
+    "available": true
+  },
+  {
+    "id": 5,
+    "name": "1GB Data Pack",
+    "description": "Get 1GB of high-speed internet data for your mobile",
+    "cost": 3500,
+    "icon": "ic_data_pack",
+    "category": "data",
+    "approval_required": true,
+    "available": true
+  },
+  {
+    "id": 6,
+    "name": "Study Badge",
+    "description": "Special recognition badge for your achievements",
+    "cost": 250,
+    "icon": "ic_badge",
+    "category": "achievement",
+    "approval_required": false,
+    "available": true
+  },
+  {
+    "id": 7,
+    "name": "Premium Lessons",
+    "description": "Unlock premium lesson content for 30 days",
+    "cost": 5000,
+    "icon": "ic_premium",
+    "category": "education",
+    "approval_required": true,
+    "available": true
+  },
+  {
+    "id": 8,
+    "name": "Certificate Print",
+    "description": "Get a physical certificate of your achievements",
+    "cost": 1500,
+    "icon": "ic_certificate",
+    "category": "achievement",
+    "approval_required": true,
+    "available": true
+  }
+]
