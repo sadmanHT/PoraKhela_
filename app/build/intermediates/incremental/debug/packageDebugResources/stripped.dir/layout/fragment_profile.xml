@@ -29,6 +29,16 @@
         android:layout_marginBottom="@dimen/margin_medium" />
 
     <com.porakhela.core.components.PorakhelaButton
+        android:id="@+id/btn_ussd_simulation"
+        style="@style/Widget.Porakhela.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="*123# USSD Menu"
+        android:textAllCaps="false"
+        android:fontFamily="monospace"
+        android:layout_marginBottom="@dimen/margin_medium" />
+
+    <com.porakhela.core.components.PorakhelaButton
         android:id="@+id/btn_help"
         style="@style/Widget.Porakhela.Button.Secondary"
         android:layout_width="match_parent"

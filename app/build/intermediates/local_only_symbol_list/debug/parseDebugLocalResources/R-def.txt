@@ -238,6 +238,17 @@ id action_parentPinAuth_to_parentDashboard
 id action_subject_category_to_lesson_player
 id avatar
 id bottom_nav_graph
+id btn0
+id btn1
+id btn2
+id btn3
+id btn4
+id btn5
+id btn6
+id btn7
+id btn8
+id btn9
+id btnClear
 id btnCompleteLesson
 id btnContinueConsent
 id btnLaunchUSSD
@@ -245,6 +256,7 @@ id btnNext
 id btnPauseTimer
 id btnResumeTimer
 id btnRewardsCenter
+id btnSend
 id btnSet2000Points
 id btnSet300Points
 id btnSet600Points
@@ -282,9 +294,9 @@ id btn_option_c
 id btn_option_d
 id btn_parent_zone
 id btn_reset_points
-id btn_send
 id btn_settings
 id btn_skip
+id btn_ussd_simulation
 id buttonCancel
 id buttonConfirm
 id buttonRedeem

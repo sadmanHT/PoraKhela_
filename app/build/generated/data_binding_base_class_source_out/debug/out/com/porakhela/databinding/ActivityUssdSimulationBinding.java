@@ -117,73 +117,73 @@ public final class ActivityUssdSimulationBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btn_0;
+      id = R.id.btn0;
       Button btn0 = ViewBindings.findChildViewById(rootView, id);
       if (btn0 == null) {
         break missingId;
       }
 
-      id = R.id.btn_1;
+      id = R.id.btn1;
       Button btn1 = ViewBindings.findChildViewById(rootView, id);
       if (btn1 == null) {
         break missingId;
       }
 
-      id = R.id.btn_2;
+      id = R.id.btn2;
       Button btn2 = ViewBindings.findChildViewById(rootView, id);
       if (btn2 == null) {
         break missingId;
       }
 
-      id = R.id.btn_3;
+      id = R.id.btn3;
       Button btn3 = ViewBindings.findChildViewById(rootView, id);
       if (btn3 == null) {
         break missingId;
       }
 
-      id = R.id.btn_4;
+      id = R.id.btn4;
       Button btn4 = ViewBindings.findChildViewById(rootView, id);
       if (btn4 == null) {
         break missingId;
       }
 
-      id = R.id.btn_5;
+      id = R.id.btn5;
       Button btn5 = ViewBindings.findChildViewById(rootView, id);
       if (btn5 == null) {
         break missingId;
       }
 
-      id = R.id.btn_6;
+      id = R.id.btn6;
       Button btn6 = ViewBindings.findChildViewById(rootView, id);
       if (btn6 == null) {
         break missingId;
       }
 
-      id = R.id.btn_7;
+      id = R.id.btn7;
       Button btn7 = ViewBindings.findChildViewById(rootView, id);
       if (btn7 == null) {
         break missingId;
       }
 
-      id = R.id.btn_8;
+      id = R.id.btn8;
       Button btn8 = ViewBindings.findChildViewById(rootView, id);
       if (btn8 == null) {
         break missingId;
       }
 
-      id = R.id.btn_9;
+      id = R.id.btn9;
       Button btn9 = ViewBindings.findChildViewById(rootView, id);
       if (btn9 == null) {
         break missingId;
       }
 
-      id = R.id.btn_clear;
+      id = R.id.btnClear;
       Button btnClear = ViewBindings.findChildViewById(rootView, id);
       if (btnClear == null) {
         break missingId;
       }
 
-      id = R.id.btn_send;
+      id = R.id.btnSend;
       Button btnSend = ViewBindings.findChildViewById(rootView, id);
       if (btnSend == null) {
         break missingId;

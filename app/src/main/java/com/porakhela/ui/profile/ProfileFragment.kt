@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.porakhela.R
 import com.porakhela.ui.parent.ParentDashboardActivity
+import com.porakhela.ui.ussd.USSDSimulationActivity
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -40,6 +41,12 @@ class ProfileFragment : Fragment() {
                 openParentDashboard()
             }
             
+            // USSD Simulation trigger for inclusivity bridge
+            view.findViewById<View>(R.id.btn_ussd_simulation)?.setOnClickListener {
+                Timber.d("Navigate to USSD simulation")
+                openUSSDSimulation()
+            }
+            
             view.findViewById<View>(R.id.btn_settings)?.setOnClickListener {
                 Timber.d("Navigate to settings")
                 // Navigate to settings
@@ -67,6 +74,23 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         } catch (e: Exception) {
             Timber.e(e, "Error opening parent dashboard")
+        }
+    }
+    
+    private fun openUSSDSimulation() {
+        try {
+            val currentTime = System.currentTimeMillis()
+            if (currentTime - lastNavigationTime < navigationThrottleMs) {
+                Timber.d("Navigation throttled - too many rapid attempts")
+                return
+            }
+            lastNavigationTime = currentTime
+            
+            Timber.d("🔌 Launching USSD Simulation - *123# Porakhela Menu")
+            val intent = Intent(requireContext(), USSDSimulationActivity::class.java)
+            startActivity(intent)
+        } catch (e: Exception) {
+            Timber.e(e, "Error opening USSD simulation")
         }
     }
     

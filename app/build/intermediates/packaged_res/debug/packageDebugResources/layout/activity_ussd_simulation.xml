@@ -102,65 +102,65 @@
 
             <!-- Row 1 -->
             <Button
-                android:id="@+id/btn_1"
+                android:id="@+id/btn1"
                 style="@style/USSDNumberButton"
                 android:text="1" />
 
             <Button
-                android:id="@+id/btn_2"
+                android:id="@+id/btn2"
                 style="@style/USSDNumberButton"
                 android:text="2" />
 
             <Button
-                android:id="@+id/btn_3"
+                android:id="@+id/btn3"
                 style="@style/USSDNumberButton"
                 android:text="3" />
 
             <!-- Row 2 -->
             <Button
-                android:id="@+id/btn_4"
+                android:id="@+id/btn4"
                 style="@style/USSDNumberButton"
                 android:text="4" />
 
             <Button
-                android:id="@+id/btn_5"
+                android:id="@+id/btn5"
                 style="@style/USSDNumberButton"
                 android:text="5" />
 
             <Button
-                android:id="@+id/btn_6"
+                android:id="@+id/btn6"
                 style="@style/USSDNumberButton"
                 android:text="6" />
 
             <!-- Row 3 -->
             <Button
-                android:id="@+id/btn_7"
+                android:id="@+id/btn7"
                 style="@style/USSDNumberButton"
                 android:text="7" />
 
             <Button
-                android:id="@+id/btn_8"
+                android:id="@+id/btn8"
                 style="@style/USSDNumberButton"
                 android:text="8" />
 
             <Button
-                android:id="@+id/btn_9"
+                android:id="@+id/btn9"
                 style="@style/USSDNumberButton"
                 android:text="9" />
 
             <!-- Row 4 -->
             <Button
-                android:id="@+id/btn_clear"
+                android:id="@+id/btnClear"
                 style="@style/USSDActionButton"
                 android:text="CLR" />
 
             <Button
-                android:id="@+id/btn_0"
+                android:id="@+id/btn0"
                 style="@style/USSDNumberButton"
                 android:text="0" />
 
             <Button
-                android:id="@+id/btn_send"
+                android:id="@+id/btnSend"
                 style="@style/USSDActionButton"
                 android:text="SEND" />
 

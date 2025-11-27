@@ -1,0 +1,1084 @@
+package com.porakhela;
+
+import android.app.Activity;
+import android.app.Service;
+import android.content.Context;
+import android.view.View;
+import androidx.fragment.app.Fragment;
+import androidx.hilt.work.HiltWrapper_WorkerFactoryModule;
+import androidx.lifecycle.SavedStateHandle;
+import androidx.lifecycle.ViewModel;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
+import com.porakhela.core.notifications.StreakNotificationScheduler;
+import com.porakhela.data.api.ApplinkApiService;
+import com.porakhela.data.api.MockApplinkInterceptor;
+import com.porakhela.data.api.RewardApiService;
+import com.porakhela.data.local.LeaderboardCache;
+import com.porakhela.data.local.OnboardingPreferences;
+import com.porakhela.data.local.ParentDashboardDatabase;
+import com.porakhela.data.local.SecureParentPreferences;
+import com.porakhela.data.local.StreakPreferences;
+import com.porakhela.data.local.UserPreferences;
+import com.porakhela.data.local.dao.RewardDao;
+import com.porakhela.data.repository.ApplinkRepository;
+import com.porakhela.data.repository.LeaderboardRepository;
+import com.porakhela.data.repository.LessonRepository;
+import com.porakhela.data.repository.ParentDashboardRepository;
+import com.porakhela.data.repository.RewardRepository;
+import com.porakhela.data.repository.SubjectRepository;
+import com.porakhela.data.tracking.StreakManager;
+import com.porakhela.data.tracking.TimeTracker;
+import com.porakhela.di.AppModule;
+import com.porakhela.di.AppModule_ProvideApplicationContextFactory;
+import com.porakhela.di.ApplinkNetworkModule;
+import com.porakhela.di.ApplinkNetworkModule_ProvideApplinkApiServiceFactory;
+import com.porakhela.di.ApplinkNetworkModule_ProvideHttpLoggingInterceptorFactory;
+import com.porakhela.di.ApplinkNetworkModule_ProvideJsonFactory;
+import com.porakhela.di.ApplinkNetworkModule_ProvideMockApplinkInterceptorFactory;
+import com.porakhela.di.ApplinkNetworkModule_ProvideOkHttpClientFactory;
+import com.porakhela.di.ApplinkNetworkModule_ProvideRetrofitFactory;
+import com.porakhela.di.DataModule;
+import com.porakhela.di.DataModule_ProvideLeaderboardCacheFactory;
+import com.porakhela.di.DataModule_ProvideLeaderboardRepositoryFactory;
+import com.porakhela.di.DataModule_ProvideParentDashboardDatabaseFactory;
+import com.porakhela.di.DataModule_ProvideRewardDaoFactory;
+import com.porakhela.di.DataModule_ProvideStreakManagerFactory;
+import com.porakhela.di.DataModule_ProvideStreakNotificationSchedulerFactory;
+import com.porakhela.di.DataModule_ProvideStreakPreferencesFactory;
+import com.porakhela.di.DataModule_ProvideTimeTrackerFactory;
+import com.porakhela.di.DataModule_ProvideUserPreferencesFactory;
+import com.porakhela.di.NetworkModule;
+import com.porakhela.domain.service.RewardService;
+import com.porakhela.ui.home.HomeFragment;
+import com.porakhela.ui.home.HomeFragment_MembersInjector;
+import com.porakhela.ui.home.HomeViewModel;
+import com.porakhela.ui.home.HomeViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.leaderboard.LeaderboardFragment;
+import com.porakhela.ui.leaderboard.LeaderboardTabFragment;
+import com.porakhela.ui.leaderboard.LeaderboardViewModel;
+import com.porakhela.ui.leaderboard.LeaderboardViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.lesson.LessonCompletionFragment;
+import com.porakhela.ui.lesson.LessonCompletionFragment_MembersInjector;
+import com.porakhela.ui.lesson.LessonPlayerFragment;
+import com.porakhela.ui.lesson.LessonPlayerFragment_MembersInjector;
+import com.porakhela.ui.lesson.LessonPlayerViewModel;
+import com.porakhela.ui.lesson.LessonPlayerViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.lessons.LessonsFragment;
+import com.porakhela.ui.lessons.LessonsViewModel;
+import com.porakhela.ui.lessons.LessonsViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.main.MainActivity;
+import com.porakhela.ui.main.MainActivity_MembersInjector;
+import com.porakhela.ui.main.MainViewModel;
+import com.porakhela.ui.main.MainViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.onboarding.OnboardingActivity;
+import com.porakhela.ui.onboarding.OnboardingFragment;
+import com.porakhela.ui.onboarding.OnboardingViewModel;
+import com.porakhela.ui.onboarding.OnboardingViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.parent.ParentDashboardActivity;
+import com.porakhela.ui.parent.ParentDashboardFragment;
+import com.porakhela.ui.parent.ParentDashboardFragment_MembersInjector;
+import com.porakhela.ui.parent.ParentDashboardViewModel;
+import com.porakhela.ui.parent.ParentDashboardViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.parent.ParentFragment;
+import com.porakhela.ui.parent.ParentPinAuthFragment;
+import com.porakhela.ui.parent.ParentViewModel;
+import com.porakhela.ui.parent.ParentViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.profile.ProfileFragment;
+import com.porakhela.ui.profile.ProfileViewModel;
+import com.porakhela.ui.profile.ProfileViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.rewards.RewardsCenterActivity;
+import com.porakhela.ui.rewards.RewardsCenterViewModel;
+import com.porakhela.ui.rewards.RewardsCenterViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.rewards.RewardsFragment;
+import com.porakhela.ui.rewards.RewardsViewModel;
+import com.porakhela.ui.rewards.RewardsViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.splash.SplashActivity;
+import com.porakhela.ui.splash.SplashActivity_MembersInjector;
+import com.porakhela.ui.splash.SplashViewModel;
+import com.porakhela.ui.splash.SplashViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.streak.StreakViewModel;
+import com.porakhela.ui.streak.StreakViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.subject.SubjectCategoryFragment;
+import com.porakhela.ui.subject.SubjectCategoryViewModel;
+import com.porakhela.ui.subject.SubjectCategoryViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.ui.ussd.USSDSimulationActivity;
+import com.porakhela.ui.ussd.USSDSimulationActivity_MembersInjector;
+import com.porakhela.ui.ussd.USSDViewModel;
+import com.porakhela.ui.ussd.USSDViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.porakhela.utils.PorapointsManager;
+import dagger.hilt.android.ActivityRetainedLifecycle;
+import dagger.hilt.android.ViewModelLifecycle;
+import dagger.hilt.android.flags.HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule;
+import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
+import dagger.hilt.android.internal.builders.ActivityRetainedComponentBuilder;
+import dagger.hilt.android.internal.builders.FragmentComponentBuilder;
+import dagger.hilt.android.internal.builders.ServiceComponentBuilder;
+import dagger.hilt.android.internal.builders.ViewComponentBuilder;
+import dagger.hilt.android.internal.builders.ViewModelComponentBuilder;
+import dagger.hilt.android.internal.builders.ViewWithFragmentComponentBuilder;
+import dagger.hilt.android.internal.lifecycle.DefaultViewModelFactories;
+import dagger.hilt.android.internal.lifecycle.DefaultViewModelFactories_InternalFactoryFactory_Factory;
+import dagger.hilt.android.internal.managers.ActivityRetainedComponentManager_LifecycleModule_ProvideActivityRetainedLifecycleFactory;
+import dagger.hilt.android.internal.modules.ApplicationContextModule;
+import dagger.hilt.android.internal.modules.ApplicationContextModule_ProvideContextFactory;
+import dagger.internal.DaggerGenerated;
+import dagger.internal.DoubleCheck;
+import dagger.internal.MapBuilder;
+import dagger.internal.Preconditions;
+import dagger.internal.SetBuilder;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.processing.Generated;
+import javax.inject.Provider;
+import kotlinx.serialization.json.Json;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+
+@DaggerGenerated
+@Generated(
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
+)
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes",
+    "KotlinInternal",
+    "KotlinInternalInJava"
+})
+public final class DaggerPorakhelaApplication_HiltComponents_SingletonC {
+  private DaggerPorakhelaApplication_HiltComponents_SingletonC() {
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder {
+    private ApplicationContextModule applicationContextModule;
+
+    private Builder() {
+    }
+
+    /**
+     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
+     */
+    @Deprecated
+    public Builder appModule(AppModule appModule) {
+      Preconditions.checkNotNull(appModule);
+      return this;
+    }
+
+    public Builder applicationContextModule(ApplicationContextModule applicationContextModule) {
+      this.applicationContextModule = Preconditions.checkNotNull(applicationContextModule);
+      return this;
+    }
+
+    /**
+     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
+     */
+    @Deprecated
+    public Builder applinkNetworkModule(ApplinkNetworkModule applinkNetworkModule) {
+      Preconditions.checkNotNull(applinkNetworkModule);
+      return this;
+    }
+
+    /**
+     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
+     */
+    @Deprecated
+    public Builder dataModule(DataModule dataModule) {
+      Preconditions.checkNotNull(dataModule);
+      return this;
+    }
+
+    /**
+     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
+     */
+    @Deprecated
+    public Builder hiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule(
+        HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule hiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule) {
+      Preconditions.checkNotNull(hiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule);
+      return this;
+    }
+
+    /**
+     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
+     */
+    @Deprecated
+    public Builder hiltWrapper_WorkerFactoryModule(
+        HiltWrapper_WorkerFactoryModule hiltWrapper_WorkerFactoryModule) {
+      Preconditions.checkNotNull(hiltWrapper_WorkerFactoryModule);
+      return this;
+    }
+
+    /**
+     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
+     */
+    @Deprecated
+    public Builder networkModule(NetworkModule networkModule) {
+      Preconditions.checkNotNull(networkModule);
+      return this;
+    }
+
+    public PorakhelaApplication_HiltComponents.SingletonC build() {
+      Preconditions.checkBuilderRequirement(applicationContextModule, ApplicationContextModule.class);
+      return new SingletonCImpl(applicationContextModule);
+    }
+  }
+
+  private static final class ActivityRetainedCBuilder implements PorakhelaApplication_HiltComponents.ActivityRetainedC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private ActivityRetainedCBuilder(SingletonCImpl singletonCImpl) {
+      this.singletonCImpl = singletonCImpl;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.ActivityRetainedC build() {
+      return new ActivityRetainedCImpl(singletonCImpl);
+    }
+  }
+
+  private static final class ActivityCBuilder implements PorakhelaApplication_HiltComponents.ActivityC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private Activity activity;
+
+    private ActivityCBuilder(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+    }
+
+    @Override
+    public ActivityCBuilder activity(Activity activity) {
+      this.activity = Preconditions.checkNotNull(activity);
+      return this;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.ActivityC build() {
+      Preconditions.checkBuilderRequirement(activity, Activity.class);
+      return new ActivityCImpl(singletonCImpl, activityRetainedCImpl, activity);
+    }
+  }
+
+  private static final class FragmentCBuilder implements PorakhelaApplication_HiltComponents.FragmentC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl;
+
+    private Fragment fragment;
+
+    private FragmentCBuilder(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+      this.activityCImpl = activityCImpl;
+    }
+
+    @Override
+    public FragmentCBuilder fragment(Fragment fragment) {
+      this.fragment = Preconditions.checkNotNull(fragment);
+      return this;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.FragmentC build() {
+      Preconditions.checkBuilderRequirement(fragment, Fragment.class);
+      return new FragmentCImpl(singletonCImpl, activityRetainedCImpl, activityCImpl, fragment);
+    }
+  }
+
+  private static final class ViewWithFragmentCBuilder implements PorakhelaApplication_HiltComponents.ViewWithFragmentC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl;
+
+    private final FragmentCImpl fragmentCImpl;
+
+    private View view;
+
+    private ViewWithFragmentCBuilder(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
+        FragmentCImpl fragmentCImpl) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+      this.activityCImpl = activityCImpl;
+      this.fragmentCImpl = fragmentCImpl;
+    }
+
+    @Override
+    public ViewWithFragmentCBuilder view(View view) {
+      this.view = Preconditions.checkNotNull(view);
+      return this;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.ViewWithFragmentC build() {
+      Preconditions.checkBuilderRequirement(view, View.class);
+      return new ViewWithFragmentCImpl(singletonCImpl, activityRetainedCImpl, activityCImpl, fragmentCImpl, view);
+    }
+  }
+
+  private static final class ViewCBuilder implements PorakhelaApplication_HiltComponents.ViewC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl;
+
+    private View view;
+
+    private ViewCBuilder(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        ActivityCImpl activityCImpl) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+      this.activityCImpl = activityCImpl;
+    }
+
+    @Override
+    public ViewCBuilder view(View view) {
+      this.view = Preconditions.checkNotNull(view);
+      return this;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.ViewC build() {
+      Preconditions.checkBuilderRequirement(view, View.class);
+      return new ViewCImpl(singletonCImpl, activityRetainedCImpl, activityCImpl, view);
+    }
+  }
+
+  private static final class ViewModelCBuilder implements PorakhelaApplication_HiltComponents.ViewModelC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private SavedStateHandle savedStateHandle;
+
+    private ViewModelLifecycle viewModelLifecycle;
+
+    private ViewModelCBuilder(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+    }
+
+    @Override
+    public ViewModelCBuilder savedStateHandle(SavedStateHandle handle) {
+      this.savedStateHandle = Preconditions.checkNotNull(handle);
+      return this;
+    }
+
+    @Override
+    public ViewModelCBuilder viewModelLifecycle(ViewModelLifecycle viewModelLifecycle) {
+      this.viewModelLifecycle = Preconditions.checkNotNull(viewModelLifecycle);
+      return this;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.ViewModelC build() {
+      Preconditions.checkBuilderRequirement(savedStateHandle, SavedStateHandle.class);
+      Preconditions.checkBuilderRequirement(viewModelLifecycle, ViewModelLifecycle.class);
+      return new ViewModelCImpl(singletonCImpl, activityRetainedCImpl, savedStateHandle, viewModelLifecycle);
+    }
+  }
+
+  private static final class ServiceCBuilder implements PorakhelaApplication_HiltComponents.ServiceC.Builder {
+    private final SingletonCImpl singletonCImpl;
+
+    private Service service;
+
+    private ServiceCBuilder(SingletonCImpl singletonCImpl) {
+      this.singletonCImpl = singletonCImpl;
+    }
+
+    @Override
+    public ServiceCBuilder service(Service service) {
+      this.service = Preconditions.checkNotNull(service);
+      return this;
+    }
+
+    @Override
+    public PorakhelaApplication_HiltComponents.ServiceC build() {
+      Preconditions.checkBuilderRequirement(service, Service.class);
+      return new ServiceCImpl(singletonCImpl, service);
+    }
+  }
+
+  private static final class ViewWithFragmentCImpl extends PorakhelaApplication_HiltComponents.ViewWithFragmentC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl;
+
+    private final FragmentCImpl fragmentCImpl;
+
+    private final ViewWithFragmentCImpl viewWithFragmentCImpl = this;
+
+    private ViewWithFragmentCImpl(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
+        FragmentCImpl fragmentCImpl, View viewParam) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+      this.activityCImpl = activityCImpl;
+      this.fragmentCImpl = fragmentCImpl;
+
+
+    }
+  }
+
+  private static final class FragmentCImpl extends PorakhelaApplication_HiltComponents.FragmentC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl;
+
+    private final FragmentCImpl fragmentCImpl = this;
+
+    private FragmentCImpl(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
+        Fragment fragmentParam) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+      this.activityCImpl = activityCImpl;
+
+
+    }
+
+    @Override
+    public void injectHomeFragment(HomeFragment homeFragment) {
+      injectHomeFragment2(homeFragment);
+    }
+
+    @Override
+    public void injectLeaderboardFragment(LeaderboardFragment leaderboardFragment) {
+    }
+
+    @Override
+    public void injectLeaderboardTabFragment(LeaderboardTabFragment leaderboardTabFragment) {
+    }
+
+    @Override
+    public void injectLessonCompletionFragment(LessonCompletionFragment lessonCompletionFragment) {
+      injectLessonCompletionFragment2(lessonCompletionFragment);
+    }
+
+    @Override
+    public void injectLessonPlayerFragment(LessonPlayerFragment lessonPlayerFragment) {
+      injectLessonPlayerFragment2(lessonPlayerFragment);
+    }
+
+    @Override
+    public void injectLessonsFragment(LessonsFragment lessonsFragment) {
+    }
+
+    @Override
+    public void injectOnboardingFragment(OnboardingFragment onboardingFragment) {
+    }
+
+    @Override
+    public void injectParentDashboardFragment(ParentDashboardFragment parentDashboardFragment) {
+      injectParentDashboardFragment2(parentDashboardFragment);
+    }
+
+    @Override
+    public void injectParentFragment(ParentFragment parentFragment) {
+    }
+
+    @Override
+    public void injectParentPinAuthFragment(ParentPinAuthFragment parentPinAuthFragment) {
+    }
+
+    @Override
+    public void injectProfileFragment(ProfileFragment profileFragment) {
+    }
+
+    @Override
+    public void injectRewardsFragment(RewardsFragment rewardsFragment) {
+    }
+
+    @Override
+    public void injectSubjectCategoryFragment(SubjectCategoryFragment subjectCategoryFragment) {
+    }
+
+    @Override
+    public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
+      return activityCImpl.getHiltInternalFactoryFactory();
+    }
+
+    @Override
+    public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
+      return new ViewWithFragmentCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl, fragmentCImpl);
+    }
+
+    @CanIgnoreReturnValue
+    private HomeFragment injectHomeFragment2(HomeFragment instance) {
+      HomeFragment_MembersInjector.injectUserPreferences(instance, singletonCImpl.provideUserPreferencesProvider.get());
+      HomeFragment_MembersInjector.injectApplinkRepository(instance, singletonCImpl.applinkRepositoryProvider.get());
+      HomeFragment_MembersInjector.injectPorapointsManager(instance, singletonCImpl.porapointsManagerProvider.get());
+      HomeFragment_MembersInjector.injectStreakManager(instance, singletonCImpl.provideStreakManagerProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private LessonCompletionFragment injectLessonCompletionFragment2(
+        LessonCompletionFragment instance) {
+      LessonCompletionFragment_MembersInjector.injectPorapointsManager(instance, singletonCImpl.porapointsManagerProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private LessonPlayerFragment injectLessonPlayerFragment2(LessonPlayerFragment instance) {
+      LessonPlayerFragment_MembersInjector.injectTimeTracker(instance, singletonCImpl.provideTimeTrackerProvider.get());
+      LessonPlayerFragment_MembersInjector.injectStreakManager(instance, singletonCImpl.provideStreakManagerProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private ParentDashboardFragment injectParentDashboardFragment2(
+        ParentDashboardFragment instance) {
+      ParentDashboardFragment_MembersInjector.injectStreakManager(instance, singletonCImpl.provideStreakManagerProvider.get());
+      return instance;
+    }
+  }
+
+  private static final class ViewCImpl extends PorakhelaApplication_HiltComponents.ViewC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl;
+
+    private final ViewCImpl viewCImpl = this;
+
+    private ViewCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        ActivityCImpl activityCImpl, View viewParam) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+      this.activityCImpl = activityCImpl;
+
+
+    }
+  }
+
+  private static final class ActivityCImpl extends PorakhelaApplication_HiltComponents.ActivityC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ActivityCImpl activityCImpl = this;
+
+    private ActivityCImpl(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl, Activity activityParam) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+
+
+    }
+
+    @Override
+    public void injectMainActivity(MainActivity mainActivity) {
+      injectMainActivity2(mainActivity);
+    }
+
+    @Override
+    public void injectOnboardingActivity(OnboardingActivity onboardingActivity) {
+    }
+
+    @Override
+    public void injectParentDashboardActivity(ParentDashboardActivity parentDashboardActivity) {
+    }
+
+    @Override
+    public void injectRewardsCenterActivity(RewardsCenterActivity rewardsCenterActivity) {
+    }
+
+    @Override
+    public void injectSplashActivity(SplashActivity splashActivity) {
+      injectSplashActivity2(splashActivity);
+    }
+
+    @Override
+    public void injectUSSDSimulationActivity(USSDSimulationActivity uSSDSimulationActivity) {
+      injectUSSDSimulationActivity2(uSSDSimulationActivity);
+    }
+
+    @Override
+    public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
+      return DefaultViewModelFactories_InternalFactoryFactory_Factory.newInstance(getViewModelKeys(), new ViewModelCBuilder(singletonCImpl, activityRetainedCImpl));
+    }
+
+    @Override
+    public Set<String> getViewModelKeys() {
+      return SetBuilder.<String>newSetBuilder(15).add(HomeViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LeaderboardViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LessonPlayerViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LessonsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(MainViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(OnboardingViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(ParentDashboardViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(ParentViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(ProfileViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(RewardsCenterViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(RewardsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(StreakViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SubjectCategoryViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(USSDViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
+    }
+
+    @Override
+    public ViewModelComponentBuilder getViewModelComponentBuilder() {
+      return new ViewModelCBuilder(singletonCImpl, activityRetainedCImpl);
+    }
+
+    @Override
+    public FragmentComponentBuilder fragmentComponentBuilder() {
+      return new FragmentCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl);
+    }
+
+    @Override
+    public ViewComponentBuilder viewComponentBuilder() {
+      return new ViewCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl);
+    }
+
+    @CanIgnoreReturnValue
+    private MainActivity injectMainActivity2(MainActivity instance) {
+      MainActivity_MembersInjector.injectNotificationScheduler(instance, singletonCImpl.provideStreakNotificationSchedulerProvider.get());
+      MainActivity_MembersInjector.injectStreakManager(instance, singletonCImpl.provideStreakManagerProvider.get());
+      MainActivity_MembersInjector.injectTimeTracker(instance, singletonCImpl.provideTimeTrackerProvider.get());
+      MainActivity_MembersInjector.injectStreakPreferences(instance, singletonCImpl.provideStreakPreferencesProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private SplashActivity injectSplashActivity2(SplashActivity instance) {
+      SplashActivity_MembersInjector.injectOnboardingPreferences(instance, singletonCImpl.onboardingPreferencesProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private USSDSimulationActivity injectUSSDSimulationActivity2(USSDSimulationActivity instance) {
+      USSDSimulationActivity_MembersInjector.injectStreakPreferences(instance, singletonCImpl.provideStreakPreferencesProvider.get());
+      return instance;
+    }
+  }
+
+  private static final class ViewModelCImpl extends PorakhelaApplication_HiltComponents.ViewModelC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl;
+
+    private final ViewModelCImpl viewModelCImpl = this;
+
+    private Provider<HomeViewModel> homeViewModelProvider;
+
+    private Provider<LeaderboardViewModel> leaderboardViewModelProvider;
+
+    private Provider<LessonPlayerViewModel> lessonPlayerViewModelProvider;
+
+    private Provider<LessonsViewModel> lessonsViewModelProvider;
+
+    private Provider<MainViewModel> mainViewModelProvider;
+
+    private Provider<OnboardingViewModel> onboardingViewModelProvider;
+
+    private Provider<ParentDashboardViewModel> parentDashboardViewModelProvider;
+
+    private Provider<ParentViewModel> parentViewModelProvider;
+
+    private Provider<ProfileViewModel> profileViewModelProvider;
+
+    private Provider<RewardsCenterViewModel> rewardsCenterViewModelProvider;
+
+    private Provider<RewardsViewModel> rewardsViewModelProvider;
+
+    private Provider<SplashViewModel> splashViewModelProvider;
+
+    private Provider<StreakViewModel> streakViewModelProvider;
+
+    private Provider<SubjectCategoryViewModel> subjectCategoryViewModelProvider;
+
+    private Provider<USSDViewModel> uSSDViewModelProvider;
+
+    private ViewModelCImpl(SingletonCImpl singletonCImpl,
+        ActivityRetainedCImpl activityRetainedCImpl, SavedStateHandle savedStateHandleParam,
+        ViewModelLifecycle viewModelLifecycleParam) {
+      this.singletonCImpl = singletonCImpl;
+      this.activityRetainedCImpl = activityRetainedCImpl;
+
+      initialize(savedStateHandleParam, viewModelLifecycleParam);
+
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initialize(final SavedStateHandle savedStateHandleParam,
+        final ViewModelLifecycle viewModelLifecycleParam) {
+      this.homeViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.leaderboardViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+      this.lessonPlayerViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
+      this.lessonsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.mainViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
+      this.onboardingViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
+      this.parentDashboardViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 6);
+      this.parentViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 7);
+      this.profileViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 8);
+      this.rewardsCenterViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 9);
+      this.rewardsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 10);
+      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 11);
+      this.streakViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 12);
+      this.subjectCategoryViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 13);
+      this.uSSDViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 14);
+    }
+
+    @Override
+    public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
+      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(15).put("com.porakhela.ui.home.HomeViewModel", ((Provider) homeViewModelProvider)).put("com.porakhela.ui.leaderboard.LeaderboardViewModel", ((Provider) leaderboardViewModelProvider)).put("com.porakhela.ui.lesson.LessonPlayerViewModel", ((Provider) lessonPlayerViewModelProvider)).put("com.porakhela.ui.lessons.LessonsViewModel", ((Provider) lessonsViewModelProvider)).put("com.porakhela.ui.main.MainViewModel", ((Provider) mainViewModelProvider)).put("com.porakhela.ui.onboarding.OnboardingViewModel", ((Provider) onboardingViewModelProvider)).put("com.porakhela.ui.parent.ParentDashboardViewModel", ((Provider) parentDashboardViewModelProvider)).put("com.porakhela.ui.parent.ParentViewModel", ((Provider) parentViewModelProvider)).put("com.porakhela.ui.profile.ProfileViewModel", ((Provider) profileViewModelProvider)).put("com.porakhela.ui.rewards.RewardsCenterViewModel", ((Provider) rewardsCenterViewModelProvider)).put("com.porakhela.ui.rewards.RewardsViewModel", ((Provider) rewardsViewModelProvider)).put("com.porakhela.ui.splash.SplashViewModel", ((Provider) splashViewModelProvider)).put("com.porakhela.ui.streak.StreakViewModel", ((Provider) streakViewModelProvider)).put("com.porakhela.ui.subject.SubjectCategoryViewModel", ((Provider) subjectCategoryViewModelProvider)).put("com.porakhela.ui.ussd.USSDViewModel", ((Provider) uSSDViewModelProvider)).build();
+    }
+
+    private static final class SwitchingProvider<T> implements Provider<T> {
+      private final SingletonCImpl singletonCImpl;
+
+      private final ActivityRetainedCImpl activityRetainedCImpl;
+
+      private final ViewModelCImpl viewModelCImpl;
+
+      private final int id;
+
+      SwitchingProvider(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+          ViewModelCImpl viewModelCImpl, int id) {
+        this.singletonCImpl = singletonCImpl;
+        this.activityRetainedCImpl = activityRetainedCImpl;
+        this.viewModelCImpl = viewModelCImpl;
+        this.id = id;
+      }
+
+      @SuppressWarnings("unchecked")
+      @Override
+      public T get() {
+        switch (id) {
+          case 0: // com.porakhela.ui.home.HomeViewModel 
+          return (T) new HomeViewModel(singletonCImpl.provideUserPreferencesProvider.get());
+
+          case 1: // com.porakhela.ui.leaderboard.LeaderboardViewModel 
+          return (T) new LeaderboardViewModel(singletonCImpl.provideLeaderboardRepositoryProvider.get(), singletonCImpl.provideUserPreferencesProvider.get());
+
+          case 2: // com.porakhela.ui.lesson.LessonPlayerViewModel 
+          return (T) new LessonPlayerViewModel(singletonCImpl.lessonRepositoryProvider.get(), singletonCImpl.provideUserPreferencesProvider.get());
+
+          case 3: // com.porakhela.ui.lessons.LessonsViewModel 
+          return (T) new LessonsViewModel();
+
+          case 4: // com.porakhela.ui.main.MainViewModel 
+          return (T) new MainViewModel();
+
+          case 5: // com.porakhela.ui.onboarding.OnboardingViewModel 
+          return (T) new OnboardingViewModel(singletonCImpl.onboardingPreferencesProvider.get());
+
+          case 6: // com.porakhela.ui.parent.ParentDashboardViewModel 
+          return (T) new ParentDashboardViewModel(singletonCImpl.parentDashboardRepositoryProvider.get());
+
+          case 7: // com.porakhela.ui.parent.ParentViewModel 
+          return (T) new ParentViewModel();
+
+          case 8: // com.porakhela.ui.profile.ProfileViewModel 
+          return (T) new ProfileViewModel();
+
+          case 9: // com.porakhela.ui.rewards.RewardsCenterViewModel 
+          return (T) new RewardsCenterViewModel(singletonCImpl.rewardRepositoryProvider.get(), singletonCImpl.rewardServiceProvider.get());
+
+          case 10: // com.porakhela.ui.rewards.RewardsViewModel 
+          return (T) new RewardsViewModel();
+
+          case 11: // com.porakhela.ui.splash.SplashViewModel 
+          return (T) new SplashViewModel();
+
+          case 12: // com.porakhela.ui.streak.StreakViewModel 
+          return (T) new StreakViewModel(singletonCImpl.provideStreakManagerProvider.get());
+
+          case 13: // com.porakhela.ui.subject.SubjectCategoryViewModel 
+          return (T) new SubjectCategoryViewModel(singletonCImpl.subjectRepositoryProvider.get());
+
+          case 14: // com.porakhela.ui.ussd.USSDViewModel 
+          return (T) new USSDViewModel(singletonCImpl.provideStreakPreferencesProvider.get(), singletonCImpl.rewardRepositoryProvider.get());
+
+          default: throw new AssertionError(id);
+        }
+      }
+    }
+  }
+
+  private static final class ActivityRetainedCImpl extends PorakhelaApplication_HiltComponents.ActivityRetainedC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ActivityRetainedCImpl activityRetainedCImpl = this;
+
+    private Provider<ActivityRetainedLifecycle> provideActivityRetainedLifecycleProvider;
+
+    private ActivityRetainedCImpl(SingletonCImpl singletonCImpl) {
+      this.singletonCImpl = singletonCImpl;
+
+      initialize();
+
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initialize() {
+      this.provideActivityRetainedLifecycleProvider = DoubleCheck.provider(new SwitchingProvider<ActivityRetainedLifecycle>(singletonCImpl, activityRetainedCImpl, 0));
+    }
+
+    @Override
+    public ActivityComponentBuilder activityComponentBuilder() {
+      return new ActivityCBuilder(singletonCImpl, activityRetainedCImpl);
+    }
+
+    @Override
+    public ActivityRetainedLifecycle getActivityRetainedLifecycle() {
+      return provideActivityRetainedLifecycleProvider.get();
+    }
+
+    private static final class SwitchingProvider<T> implements Provider<T> {
+      private final SingletonCImpl singletonCImpl;
+
+      private final ActivityRetainedCImpl activityRetainedCImpl;
+
+      private final int id;
+
+      SwitchingProvider(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+          int id) {
+        this.singletonCImpl = singletonCImpl;
+        this.activityRetainedCImpl = activityRetainedCImpl;
+        this.id = id;
+      }
+
+      @SuppressWarnings("unchecked")
+      @Override
+      public T get() {
+        switch (id) {
+          case 0: // dagger.hilt.android.ActivityRetainedLifecycle 
+          return (T) ActivityRetainedComponentManager_LifecycleModule_ProvideActivityRetainedLifecycleFactory.provideActivityRetainedLifecycle();
+
+          default: throw new AssertionError(id);
+        }
+      }
+    }
+  }
+
+  private static final class ServiceCImpl extends PorakhelaApplication_HiltComponents.ServiceC {
+    private final SingletonCImpl singletonCImpl;
+
+    private final ServiceCImpl serviceCImpl = this;
+
+    private ServiceCImpl(SingletonCImpl singletonCImpl, Service serviceParam) {
+      this.singletonCImpl = singletonCImpl;
+
+
+    }
+  }
+
+  private static final class SingletonCImpl extends PorakhelaApplication_HiltComponents.SingletonC {
+    private final ApplicationContextModule applicationContextModule;
+
+    private final SingletonCImpl singletonCImpl = this;
+
+    private Provider<StreakNotificationScheduler> provideStreakNotificationSchedulerProvider;
+
+    private Provider<StreakPreferences> provideStreakPreferencesProvider;
+
+    private Provider<StreakManager> provideStreakManagerProvider;
+
+    private Provider<TimeTracker> provideTimeTrackerProvider;
+
+    private Provider<OnboardingPreferences> onboardingPreferencesProvider;
+
+    private Provider<UserPreferences> provideUserPreferencesProvider;
+
+    private Provider<Context> provideApplicationContextProvider;
+
+    private Provider<HttpLoggingInterceptor> provideHttpLoggingInterceptorProvider;
+
+    private Provider<MockApplinkInterceptor> provideMockApplinkInterceptorProvider;
+
+    private Provider<OkHttpClient> provideOkHttpClientProvider;
+
+    private Provider<Json> provideJsonProvider;
+
+    private Provider<Retrofit> provideRetrofitProvider;
+
+    private Provider<ApplinkApiService> provideApplinkApiServiceProvider;
+
+    private Provider<PorapointsManager> porapointsManagerProvider;
+
+    private Provider<ApplinkRepository> applinkRepositoryProvider;
+
+    private Provider<LeaderboardCache> provideLeaderboardCacheProvider;
+
+    private Provider<LeaderboardRepository> provideLeaderboardRepositoryProvider;
+
+    private Provider<LessonRepository> lessonRepositoryProvider;
+
+    private Provider<SecureParentPreferences> secureParentPreferencesProvider;
+
+    private Provider<ParentDashboardDatabase> provideParentDashboardDatabaseProvider;
+
+    private Provider<ParentDashboardRepository> parentDashboardRepositoryProvider;
+
+    private Provider<RewardRepository> rewardRepositoryProvider;
+
+    private Provider<RewardApiService> rewardApiServiceProvider;
+
+    private Provider<RewardService> rewardServiceProvider;
+
+    private Provider<SubjectRepository> subjectRepositoryProvider;
+
+    private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
+      this.applicationContextModule = applicationContextModuleParam;
+      initialize(applicationContextModuleParam);
+
+    }
+
+    private RewardDao rewardDao() {
+      return DataModule_ProvideRewardDaoFactory.provideRewardDao(provideParentDashboardDatabaseProvider.get());
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initialize(final ApplicationContextModule applicationContextModuleParam) {
+      this.provideStreakNotificationSchedulerProvider = DoubleCheck.provider(new SwitchingProvider<StreakNotificationScheduler>(singletonCImpl, 0));
+      this.provideStreakPreferencesProvider = DoubleCheck.provider(new SwitchingProvider<StreakPreferences>(singletonCImpl, 2));
+      this.provideStreakManagerProvider = DoubleCheck.provider(new SwitchingProvider<StreakManager>(singletonCImpl, 1));
+      this.provideTimeTrackerProvider = DoubleCheck.provider(new SwitchingProvider<TimeTracker>(singletonCImpl, 3));
+      this.onboardingPreferencesProvider = DoubleCheck.provider(new SwitchingProvider<OnboardingPreferences>(singletonCImpl, 4));
+      this.provideUserPreferencesProvider = DoubleCheck.provider(new SwitchingProvider<UserPreferences>(singletonCImpl, 5));
+      this.provideApplicationContextProvider = DoubleCheck.provider(new SwitchingProvider<Context>(singletonCImpl, 7));
+      this.provideHttpLoggingInterceptorProvider = DoubleCheck.provider(new SwitchingProvider<HttpLoggingInterceptor>(singletonCImpl, 11));
+      this.provideMockApplinkInterceptorProvider = DoubleCheck.provider(new SwitchingProvider<MockApplinkInterceptor>(singletonCImpl, 12));
+      this.provideOkHttpClientProvider = DoubleCheck.provider(new SwitchingProvider<OkHttpClient>(singletonCImpl, 10));
+      this.provideJsonProvider = DoubleCheck.provider(new SwitchingProvider<Json>(singletonCImpl, 13));
+      this.provideRetrofitProvider = DoubleCheck.provider(new SwitchingProvider<Retrofit>(singletonCImpl, 9));
+      this.provideApplinkApiServiceProvider = DoubleCheck.provider(new SwitchingProvider<ApplinkApiService>(singletonCImpl, 8));
+      this.porapointsManagerProvider = DoubleCheck.provider(new SwitchingProvider<PorapointsManager>(singletonCImpl, 14));
+      this.applinkRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<ApplinkRepository>(singletonCImpl, 6));
+      this.provideLeaderboardCacheProvider = DoubleCheck.provider(new SwitchingProvider<LeaderboardCache>(singletonCImpl, 16));
+      this.provideLeaderboardRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<LeaderboardRepository>(singletonCImpl, 15));
+      this.lessonRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<LessonRepository>(singletonCImpl, 17));
+      this.secureParentPreferencesProvider = DoubleCheck.provider(new SwitchingProvider<SecureParentPreferences>(singletonCImpl, 19));
+      this.provideParentDashboardDatabaseProvider = DoubleCheck.provider(new SwitchingProvider<ParentDashboardDatabase>(singletonCImpl, 20));
+      this.parentDashboardRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<ParentDashboardRepository>(singletonCImpl, 18));
+      this.rewardRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<RewardRepository>(singletonCImpl, 21));
+      this.rewardApiServiceProvider = DoubleCheck.provider(new SwitchingProvider<RewardApiService>(singletonCImpl, 23));
+      this.rewardServiceProvider = DoubleCheck.provider(new SwitchingProvider<RewardService>(singletonCImpl, 22));
+      this.subjectRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<SubjectRepository>(singletonCImpl, 24));
+    }
+
+    @Override
+    public void injectPorakhelaApplication(PorakhelaApplication porakhelaApplication) {
+    }
+
+    @Override
+    public Set<Boolean> getDisableFragmentGetContextFix() {
+      return Collections.<Boolean>emptySet();
+    }
+
+    @Override
+    public ActivityRetainedComponentBuilder retainedComponentBuilder() {
+      return new ActivityRetainedCBuilder(singletonCImpl);
+    }
+
+    @Override
+    public ServiceComponentBuilder serviceComponentBuilder() {
+      return new ServiceCBuilder(singletonCImpl);
+    }
+
+    private static final class SwitchingProvider<T> implements Provider<T> {
+      private final SingletonCImpl singletonCImpl;
+
+      private final int id;
+
+      SwitchingProvider(SingletonCImpl singletonCImpl, int id) {
+        this.singletonCImpl = singletonCImpl;
+        this.id = id;
+      }
+
+      @SuppressWarnings("unchecked")
+      @Override
+      public T get() {
+        switch (id) {
+          case 0: // com.porakhela.core.notifications.StreakNotificationScheduler 
+          return (T) DataModule_ProvideStreakNotificationSchedulerFactory.provideStreakNotificationScheduler(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 1: // com.porakhela.data.tracking.StreakManager 
+          return (T) DataModule_ProvideStreakManagerFactory.provideStreakManager(singletonCImpl.provideStreakPreferencesProvider.get());
+
+          case 2: // com.porakhela.data.local.StreakPreferences 
+          return (T) DataModule_ProvideStreakPreferencesFactory.provideStreakPreferences(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 3: // com.porakhela.data.tracking.TimeTracker 
+          return (T) DataModule_ProvideTimeTrackerFactory.provideTimeTracker(singletonCImpl.provideStreakPreferencesProvider.get());
+
+          case 4: // com.porakhela.data.local.OnboardingPreferences 
+          return (T) new OnboardingPreferences(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 5: // com.porakhela.data.local.UserPreferences 
+          return (T) DataModule_ProvideUserPreferencesFactory.provideUserPreferences(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 6: // com.porakhela.data.repository.ApplinkRepository 
+          return (T) new ApplinkRepository(singletonCImpl.provideApplicationContextProvider.get(), singletonCImpl.provideApplinkApiServiceProvider.get(), singletonCImpl.porapointsManagerProvider.get());
+
+          case 7: // android.content.Context 
+          return (T) AppModule_ProvideApplicationContextFactory.provideApplicationContext(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 8: // com.porakhela.data.api.ApplinkApiService 
+          return (T) ApplinkNetworkModule_ProvideApplinkApiServiceFactory.provideApplinkApiService(singletonCImpl.provideRetrofitProvider.get());
+
+          case 9: // retrofit2.Retrofit 
+          return (T) ApplinkNetworkModule_ProvideRetrofitFactory.provideRetrofit(singletonCImpl.provideOkHttpClientProvider.get(), singletonCImpl.provideJsonProvider.get());
+
+          case 10: // okhttp3.OkHttpClient 
+          return (T) ApplinkNetworkModule_ProvideOkHttpClientFactory.provideOkHttpClient(singletonCImpl.provideHttpLoggingInterceptorProvider.get(), singletonCImpl.provideMockApplinkInterceptorProvider.get());
+
+          case 11: // okhttp3.logging.HttpLoggingInterceptor 
+          return (T) ApplinkNetworkModule_ProvideHttpLoggingInterceptorFactory.provideHttpLoggingInterceptor();
+
+          case 12: // com.porakhela.data.api.MockApplinkInterceptor 
+          return (T) ApplinkNetworkModule_ProvideMockApplinkInterceptorFactory.provideMockApplinkInterceptor();
+
+          case 13: // kotlinx.serialization.json.Json 
+          return (T) ApplinkNetworkModule_ProvideJsonFactory.provideJson();
+
+          case 14: // com.porakhela.utils.PorapointsManager 
+          return (T) new PorapointsManager(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 15: // com.porakhela.data.repository.LeaderboardRepository 
+          return (T) DataModule_ProvideLeaderboardRepositoryFactory.provideLeaderboardRepository(singletonCImpl.provideLeaderboardCacheProvider.get(), singletonCImpl.provideUserPreferencesProvider.get());
+
+          case 16: // com.porakhela.data.local.LeaderboardCache 
+          return (T) DataModule_ProvideLeaderboardCacheFactory.provideLeaderboardCache(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 17: // com.porakhela.data.repository.LessonRepository 
+          return (T) new LessonRepository(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 18: // com.porakhela.data.repository.ParentDashboardRepository 
+          return (T) new ParentDashboardRepository(singletonCImpl.secureParentPreferencesProvider.get(), singletonCImpl.provideParentDashboardDatabaseProvider.get(), singletonCImpl.porapointsManagerProvider.get(), singletonCImpl.provideUserPreferencesProvider.get());
+
+          case 19: // com.porakhela.data.local.SecureParentPreferences 
+          return (T) new SecureParentPreferences(singletonCImpl.provideApplicationContextProvider.get());
+
+          case 20: // com.porakhela.data.local.ParentDashboardDatabase 
+          return (T) DataModule_ProvideParentDashboardDatabaseFactory.provideParentDashboardDatabase(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 21: // com.porakhela.data.repository.RewardRepository 
+          return (T) new RewardRepository(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule), singletonCImpl.rewardDao());
+
+          case 22: // com.porakhela.domain.service.RewardService 
+          return (T) new RewardService(singletonCImpl.rewardRepositoryProvider.get(), singletonCImpl.rewardApiServiceProvider.get(), singletonCImpl.provideStreakPreferencesProvider.get());
+
+          case 23: // com.porakhela.data.api.RewardApiService 
+          return (T) new RewardApiService();
+
+          case 24: // com.porakhela.data.repository.SubjectRepository 
+          return (T) new SubjectRepository(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          default: throw new AssertionError(id);
+        }
+      }
+    }
+  }
+}

@@ -1,506 +1,514 @@
 [
     {
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\anim_shake.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\anim\\shake.xml"
+    },
+    {
         "merged": "com.porakhela.app-debug-63:/layout_activity_ussd_simulation.xml.flat",
         "source": "com.porakhela.app-main-65:/layout/activity_ussd_simulation.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_indicator_dot_unselected.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/indicator_dot_unselected.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_warning_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_warning_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_welcome_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/welcome_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_leaderboard_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_leaderboard_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_onboarding_welcome.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_welcome.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_rewards_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_rewards_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_leaderboard.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_leaderboard.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_item_daily_report.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\item_daily_report.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.porakhela.app-main-65:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_subject_card_math.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\subject_card_math.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/navigation_nav_graph.xml.flat",
-        "source": "com.porakhela.app-main-65:/navigation/nav_graph.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ussd_action_button_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ussd_action_button_bg.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_category_card.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_category_card.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_child_profile_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_child_profile_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_security.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_security.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\color_bottom_nav_color_selector.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\color\\bottom_nav_color_selector.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_rank_down.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_rank_down.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_activity_splash.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_onboarding_porapoints.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_onboarding_porapoints.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/xml_backup_rules.xml.flat",
-        "source": "com.porakhela.app-main-65:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_star.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_star.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_parent_pin_auth.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_parent_pin_auth.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_child.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_child.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_leaderboard_tab.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_leaderboard_tab.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_trophy_bronze.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_trophy_bronze.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_card_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/card_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_leaderboard_normal_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\leaderboard_normal_bg.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_star_points.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_star_points.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_rank_up.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_rank_up.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_dialog_reward_confirmation.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/dialog_reward_confirmation.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_child_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_child_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_activity_onboarding.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/activity_onboarding.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_analytics.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_analytics.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_game_controller.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/game_controller.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_parent.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_parent.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_crown_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_crown_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\navigation_parent_dashboard_navigation.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\navigation\\parent_dashboard_navigation.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_circle_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_circle_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_4.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_4.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_3.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_3.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_button_primary_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\button_primary_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_item_leaderboard_entry.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/item_leaderboard_entry.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_lessons.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_lessons.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_9.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_9.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_star_points.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_star_points.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_2.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_2.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_parent_dashboard.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_parent_dashboard.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_info_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_info_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_gift.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_gift.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_child_profile_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_child_profile_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\font_poppins_regular.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\font\\poppins_regular.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_child.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_child.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_button_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_button_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/xml_data_extraction_rules.xml.flat",
-        "source": "com.porakhela.app-main-65:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_star_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_star_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_subject_card_science.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/subject_card_science.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\font_poppins_semibold.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\font\\poppins_semibold.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_porapoints_icon.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/porapoints_icon.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_crown_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_crown_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_data_pack.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_data_pack.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_leaderboard.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_leaderboard.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_empty_leaderboard.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_empty_leaderboard.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_stats_card.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_stats_card.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_parent.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_parent.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_profile_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_profile_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_logout.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_logout.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_security.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_security.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_rewards_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_rewards_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_dialog_developer_tools.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\dialog_developer_tools.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_analytics.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_analytics.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_activity_ussd_launcher.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/activity_ussd_launcher.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_trophy_gold.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_trophy_gold.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_leaderboard_top_three_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/leaderboard_top_three_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_trophy_silver.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_trophy_silver.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_lesson_option_button.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/lesson_option_button.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_circle_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_circle_bg.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_pin_dot_filled.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/pin_dot_filled.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_onboarding_gamification.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_onboarding_gamification.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_child_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_child_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_lesson_completion.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_lesson_completion.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_gamification_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/gamification_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_stats_card.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_stats_card.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_game_controller.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\game_controller.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_1.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_1.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_subject_card_social.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\subject_card_social.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/anim_slide_out_left.xml.flat",
-        "source": "com.porakhela.app-main-65:/anim/slide_out_left.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_5.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_5.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/menu_bottom_navigation_menu.xml.flat",
-        "source": "com.porakhela.app-main-65:/menu/bottom_navigation_menu.xml"
-    },
-    {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_warning_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_warning_background.xml"
-    },
-    {
-        "merged": "com.porakhela.app-debug-63:/navigation_bottom_nav_graph.xml.flat",
-        "source": "com.porakhela.app-main-65:/navigation/bottom_nav_graph.xml"
-    },
-    {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_welcome_character.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_welcome_character.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_welcome_character.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\welcome_character.xml"
     },
     {
         "merged": "com.porakhela.app-debug-63:/layout_fragment_profile.xml.flat",
         "source": "com.porakhela.app-main-65:/layout/fragment_profile.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_item_reward_card.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/item_reward_card.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_data_pack.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_data_pack.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_home_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_home_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\anim_slide_out_left.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\anim\\slide_out_left.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/anim_slide_in_right.xml.flat",
-        "source": "com.porakhela.app-main-65:/anim/slide_in_right.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_badge.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_badge.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_leaderboard_current_user_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/leaderboard_current_user_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_arrow_back.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_arrow_back.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/font_poppins_bold.xml.flat",
-        "source": "com.porakhela.app-main-65:/font/poppins_bold.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_approval.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_approval.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_profile_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_profile_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_onboarding.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_item_reward_card.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\item_reward_card.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/mipmap-hdpi_ic_launcher.xml.flat",
-        "source": "com.porakhela.app-main-65:/mipmap-hdpi/ic_launcher.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_2.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_2.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_phone_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_phone_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_dialog_reward_confirmation.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\dialog_reward_confirmation.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_parent_dashboard.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_parent_dashboard.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_subject_card_science.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\subject_card_science.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_leaderboard_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_leaderboard_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_rank_down.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_rank_down.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_activity_parent_dashboard.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/activity_parent_dashboard.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_rewards.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_rewards.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_leaderboard_divider.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/leaderboard_divider.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_info_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_info_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_4.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_4.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_ussd_simulation.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_ussd_simulation.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_7.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_7.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\menu_bottom_navigation_menu.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\menu\\bottom_navigation_menu.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_premium.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_premium.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_logout.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_logout.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_button_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_button_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_splash_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\splash_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_subject_card_social.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/subject_card_social.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_onboarding.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_onboarding.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_pin_dot_empty.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/pin_dot_empty.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_leaderboard_divider.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\leaderboard_divider.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_badge.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_badge.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_onboarding_welcome.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_onboarding_welcome.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_lesson_completion.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_lesson_completion.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_onboarding.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_onboarding.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_dialog_developer_tools.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/dialog_developer_tools.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\font_poppins_bold.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\font\\poppins_bold.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.porakhela.app-main-65:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_leaderboard_tab.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_leaderboard_tab.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_talktime.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_talktime.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_pin_dot_filled.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\pin_dot_filled.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_trophy_silver.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_trophy_silver.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_item_category_card.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\item_category_card.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rank_circle_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rank_circle_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_gamification_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\gamification_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_gift.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_gift.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_leaderboard_current_user_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\leaderboard_current_user_bg.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_6.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_6.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_rank_up.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_rank_up.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_person_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_person_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_button_primary_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/button_primary_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_ussd_launcher.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_ussd_launcher.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_subject_category.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_subject_category.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_item_leaderboard_entry.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\item_leaderboard_entry.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_welcome_character.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/welcome_character.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\navigation_bottom_nav_graph.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\navigation\\bottom_nav_graph.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/font_poppins_semibold.xml.flat",
-        "source": "com.porakhela.app-main-65:/font/poppins_semibold.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\mipmap-hdpi\\ic_launcher.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_lessons_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_lessons_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_lessons_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_lessons_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_rewards.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_rewards.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_7.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_7.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_onboarding_porapoints.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_porapoints.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_pin_dot_empty.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\pin_dot_empty.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_onboarding_gamification.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_gamification.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_badge.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_badge.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_splash_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/splash_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_premium.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_premium.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_star.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_star.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_subject_card_english.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/subject_card_english.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_profile.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_arrow_back.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_arrow_back.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_parent_dashboard.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_parent_dashboard.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_badge.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_badge.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_trophy_bronze.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_trophy_bronze.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\mipmap-hdpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ussd_action_button_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ussd_action_button_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_talktime.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_talktime.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_onboarding_consent.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_onboarding_consent.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_game_elements.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_game_elements.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_lesson_player.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_lesson_player.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_10.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_10.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/font_poppins_regular.xml.flat",
-        "source": "com.porakhela.app-main-65:/font/poppins_regular.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_phone_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_phone_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_item_daily_report.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/item_daily_report.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_1.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_1.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_leaderboard_normal_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/leaderboard_normal_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_edittext_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_edittext_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_person_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_person_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_porapoints_icon.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\porapoints_icon.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_indicator_dot_unselected.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\indicator_dot_unselected.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_5.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_5.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_phone.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_phone.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_timer.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_timer.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_8.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_8.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_header_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_header_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_indicator_dot_selected.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\indicator_dot_selected.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/navigation_parent_dashboard_navigation.xml.flat",
-        "source": "com.porakhela.app-main-65:/navigation/parent_dashboard_navigation.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_onboarding_consent.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_onboarding_consent.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_lessons.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_lessons.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_lesson_player.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_lesson_player.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_phone.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_phone.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_rewards_center.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_rewards_center.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_8.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_8.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_card_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\card_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_game_elements.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_game_elements.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_9.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_9.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_rounded_edittext_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/rounded_edittext_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_empty_leaderboard.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_empty_leaderboard.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_indicator_dot_selected.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/indicator_dot_selected.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ussd_number_button_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ussd_number_button_bg.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_avatar_10.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/avatar_10.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_welcome_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\welcome_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ussd_number_button_bg.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ussd_number_button_bg.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_header_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_header_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_approval.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_approval.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_home_24.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_home_24.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_fragment_home.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/fragment_home.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\anim_slide_in_right.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\anim\\slide_in_right.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/anim_shake.xml.flat",
-        "source": "com.porakhela.app-main-65:/anim/shake.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_subject_card_english.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\subject_card_english.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/mipmap-hdpi_ic_launcher_round.xml.flat",
-        "source": "com.porakhela.app-main-65:/mipmap-hdpi/ic_launcher_round.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_item_category_card.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/item_category_card.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_6.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_6.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_porapoints_background.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/porapoints_background.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rank_circle_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rank_circle_bg.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_star_24.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_star_24.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_lesson_option_button.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\lesson_option_button.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_activity_rewards_center.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/activity_rewards_center.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_rounded_category_card.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\rounded_category_card.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_ic_trophy_gold.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/ic_trophy_gold.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_parent_pin_auth.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_parent_pin_auth.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/drawable_subject_card_math.xml.flat",
-        "source": "com.porakhela.app-main-65:/drawable/subject_card_math.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\layout_fragment_subject_category.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\layout\\fragment_subject_category.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/layout_activity_main.xml.flat",
-        "source": "com.porakhela.app-main-65:/layout/activity_main.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_porapoints_background.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\porapoints_background.xml"
     },
     {
-        "merged": "com.porakhela.app-debug-63:/color_bottom_nav_color_selector.xml.flat",
-        "source": "com.porakhela.app-main-65:/color/bottom_nav_color_selector.xml"
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_timer.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_timer.xml"
+    },
+    {
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_ic_welcome_character.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\ic_welcome_character.xml"
+    },
+    {
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_avatar_3.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\avatar_3.xml"
+    },
+    {
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\navigation\\nav_graph.xml"
+    },
+    {
+        "merged": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-debug-63:\\drawable_leaderboard_top_three_bg.xml.flat",
+        "source": "C:\\Users\\shtpr\\.gradle\\daemon\\8.4\\com.porakhela.app-main-65:\\drawable\\leaderboard_top_three_bg.xml"
     }
 ]

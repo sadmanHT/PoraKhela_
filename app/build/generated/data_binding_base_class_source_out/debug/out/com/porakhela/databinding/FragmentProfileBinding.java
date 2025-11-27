@@ -28,12 +28,17 @@ public final class FragmentProfileBinding implements ViewBinding {
   @NonNull
   public final PorakhelaButton btnSettings;
 
+  @NonNull
+  public final PorakhelaButton btnUssdSimulation;
+
   private FragmentProfileBinding(@NonNull LinearLayout rootView, @NonNull PorakhelaButton btnHelp,
-      @NonNull PorakhelaButton btnParentZone, @NonNull PorakhelaButton btnSettings) {
+      @NonNull PorakhelaButton btnParentZone, @NonNull PorakhelaButton btnSettings,
+      @NonNull PorakhelaButton btnUssdSimulation) {
     this.rootView = rootView;
     this.btnHelp = btnHelp;
     this.btnParentZone = btnParentZone;
     this.btnSettings = btnSettings;
+    this.btnUssdSimulation = btnUssdSimulation;
   }
 
   @Override
@@ -81,8 +86,14 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_ussd_simulation;
+      PorakhelaButton btnUssdSimulation = ViewBindings.findChildViewById(rootView, id);
+      if (btnUssdSimulation == null) {
+        break missingId;
+      }
+
       return new FragmentProfileBinding((LinearLayout) rootView, btnHelp, btnParentZone,
-          btnSettings);
+          btnSettings, btnUssdSimulation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
