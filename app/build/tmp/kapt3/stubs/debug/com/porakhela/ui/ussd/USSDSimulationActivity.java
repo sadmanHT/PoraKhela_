@@ -101,6 +101,7 @@ public final class USSDSimulationActivity extends androidx.activity.ComponentAct
     
     /**
      * Prevent input spam that could crash the app
+     * Also validate app state for robustness
      */
     private final boolean canProcessInput() {
         return false;

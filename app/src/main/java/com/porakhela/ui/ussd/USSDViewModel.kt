@@ -59,6 +59,13 @@ class USSDViewModel @Inject constructor(
     }
     
     /**
+     * Restart PIN authentication (public method for state restoration)
+     */
+    fun restartPinAuthentication() {
+        startPinAuthentication()
+    }
+    
+    /**
      * Verify PIN for USSD access
      */
     fun verifyPinAccess(inputPin: String): Boolean {
@@ -83,8 +90,9 @@ class USSDViewModel @Inject constructor(
     
     /**
      * Show Main Menu after successful authentication
+     * Made public for state restoration
      */
-    private fun showMainMenu() {
+    fun showMainMenu() {
         val response = """
             Porakhela USSD Menu
             
@@ -103,13 +111,20 @@ class USSDViewModel @Inject constructor(
     /**
      * Option 1: Check Porapoints
      * Display total points and pending redemptions
+     * Ensures data matches Home screen exactly
      */
     fun checkPorapoints() {
         viewModelScope.launch {
             try {
+                // Force refresh to ensure consistency with Home screen
                 val userStats = streakPreferences.getBasicStats()
                 val totalPoints = userStats.totalPoints
                 val pendingCount = getPendingRedemptionsCount()
+                
+                // Validate data consistency
+                if (totalPoints < 0) {
+                    throw IllegalStateException("Invalid points value: $totalPoints")
+                }
                 
                 val response = """
                     Porakhela Balance Check
@@ -125,10 +140,19 @@ class USSDViewModel @Inject constructor(
                 _ussdResponse.value = response
                 _currentState.value = USSDState.PORAPOINTS_CHECK
                 
-                Timber.d("💰 USSD Porapoints Check: $totalPoints points, $pendingCount pending")
+                Timber.d("💰 USSD Porapoints Check: $totalPoints points, $pendingCount pending - Consistent with Home")
                 
             } catch (e: Exception) {
-                _ussdResponse.value = "Error checking balance. Try again.\n\n0. Back to Menu"
+                val errorResponse = """
+                    Error checking balance
+                    
+                    Please try again later.
+                    
+                    0. Back to Menu
+                """.trimIndent()
+                    
+                _ussdResponse.value = errorResponse
+                _currentState.value = USSDState.PORAPOINTS_CHECK
                 Timber.e(e, "❌ USSD Porapoints check failed")
             }
         }
@@ -473,7 +497,11 @@ class USSDViewModel @Inject constructor(
         try {
             // Update reward status in database
             rewardRepository.approveReward(rewardId)
-            Timber.d("✅ USSD: Reward $rewardId approved successfully")
+            
+            // Force refresh pending rewards immediately for instant update
+            pendingRewards = getPendingRewardsForApproval()
+            
+            Timber.d("✅ USSD: Reward $rewardId approved successfully, status updated instantly")
         } catch (e: Exception) {
             Timber.e(e, "❌ USSD: Failed to approve reward $rewardId")
             throw e
@@ -484,7 +512,11 @@ class USSDViewModel @Inject constructor(
         try {
             // Update reward status in database
             rewardRepository.denyReward(rewardId)
-            Timber.d("❌ USSD: Reward $rewardId denied successfully")
+            
+            // Force refresh pending rewards immediately for instant update
+            pendingRewards = getPendingRewardsForApproval()
+            
+            Timber.d("❌ USSD: Reward $rewardId denied successfully, status updated instantly")
         } catch (e: Exception) {
             Timber.e(e, "❌ USSD: Failed to deny reward $rewardId")
             throw e

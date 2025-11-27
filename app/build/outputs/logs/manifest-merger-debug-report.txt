@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-96:12
-INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-96:12
-INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-96:12
-INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-96:12
+ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-99:12
+INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-99:12
+INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-99:12
+INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:2:1-99:12
 MERGED from [androidx.databinding:databinding-adapters:8.3.0] C:\Users\shtpr\.gradle\caches\transforms-3\c6c4eef529e745a5ce466401c8c5ebb1\transformed\databinding-adapters-8.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.3.0] C:\Users\shtpr\.gradle\caches\transforms-3\156ba4c96e316c4d7289c05ccb5746dc\transformed\databinding-ktx-8.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.3.0] C:\Users\shtpr\.gradle\caches\transforms-3\d14902de2daf0abcf9d21553bb72bf6c\transformed\databinding-runtime-8.3.0\AndroidManifest.xml:2:1-7:12
@@ -121,8 +121,8 @@ MERGED from [androidx.work:work-runtime:2.9.0] C:\Users\shtpr\.gradle\caches\tra
 	android:name
 		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:13:22-65
 application
-ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:15:5-94:19
-INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:15:5-94:19
+ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:15:5-97:19
+INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:15:5-97:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\shtpr\.gradle\caches\transforms-3\ba3ecd898fd7360ea4f08bc07efaec82\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\shtpr\.gradle\caches\transforms-3\ba3ecd898fd7360ea4f08bc07efaec82\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\shtpr\.gradle\caches\transforms-3\09fa1e44e62a8f316b15e33dbd62444d\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -222,61 +222,59 @@ ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:50:9-56:6
 	android:name
 		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:51:13-61
 activity#com.porakhela.ui.ussd.USSDSimulationActivity
-ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:59:9-65:66
+ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:59:9-64:52
 	android:screenOrientation
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:62:13-49
-	android:parentActivityName
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:65:13-63
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:64:13-49
 	android:launchMode
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:63:13-43
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:63:13-44
 	android:exported
 		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:61:13-37
-	android:theme
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:64:13-63
+	android:configChanges
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:62:13-74
 	android:name
 		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:60:13-59
 activity#com.porakhela.ui.ussd.USSDLauncherActivity
-ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:68:9-73:66
+ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:71:9-76:66
 	android:screenOrientation
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:71:13-49
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:74:13-49
 	android:parentActivityName
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:73:13-63
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:76:13-63
 	android:launchMode
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:72:13-43
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:75:13-43
 	android:exported
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:70:13-37
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:73:13-37
 	android:name
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:69:13-57
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:72:13-57
 activity#com.porakhela.ui.onboarding.OnboardingActivity
-ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:76:9-82:54
+ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:79:9-85:54
 	android:screenOrientation
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:79:13-49
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:82:13-49
 	android:windowSoftInputMode
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:81:13-55
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:84:13-55
 	android:exported
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:78:13-37
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:81:13-37
 	android:configChanges
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:80:13-74
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:83:13-74
 	android:theme
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:82:13-51
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:85:13-51
 	android:name
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:77:13-61
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:80:13-61
 activity#com.porakhela.ui.parent.ParentDashboardActivity
-ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:85:9-92:56
+ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:88:9-95:56
 	android:screenOrientation
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:88:13-49
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:91:13-49
 	android:label
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:92:13-53
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:95:13-53
 	android:windowSoftInputMode
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:90:13-52
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:93:13-52
 	android:exported
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:87:13-37
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:90:13-37
 	android:configChanges
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:89:13-81
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:92:13-81
 	android:theme
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:91:13-51
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:94:13-51
 	android:name
-		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:86:13-62
+		ADDED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml:89:13-62
 uses-sdk
 INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\Applink_Final\Porakhela\app\src\main\AndroidManifest.xml

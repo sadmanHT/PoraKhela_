@@ -75,11 +75,14 @@
         <!-- USSD Simulation Activity -->
         <activity
             android:name="com.porakhela.ui.ussd.USSDSimulationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="false"
-            android:launchMode="singleTop"
-            android:parentActivityName="com.porakhela.ui.main.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Porakhela.NoActionBar" />
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Porakhela.NoActionBar"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <!-- USSD Launcher Activity -->
         <activity

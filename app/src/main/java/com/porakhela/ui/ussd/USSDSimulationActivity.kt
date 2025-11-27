@@ -109,17 +109,21 @@ class USSDSimulationActivity : ComponentActivity() {
     }
     
     private fun setupNumberPad() {
-        val numberButtons = listOf(
-            binding.btn0, binding.btn1, binding.btn2, binding.btn3, binding.btn4,
-            binding.btn5, binding.btn6, binding.btn7, binding.btn8, binding.btn9
+        // Map buttons correctly to their numeric values
+        val buttonMap = mapOf(
+            binding.btn0 to "0", binding.btn1 to "1", binding.btn2 to "2",
+            binding.btn3 to "3", binding.btn4 to "4", binding.btn5 to "5",
+            binding.btn6 to "6", binding.btn7 to "7", binding.btn8 to "8",
+            binding.btn9 to "9"
         )
         
-        numberButtons.forEachIndexed { index, button ->
+        buttonMap.forEach { (button, digit) ->
             button.setOnClickListener {
                 if (canProcessInput() && inputBuffer.length < MAX_INPUT_LENGTH) {
-                    inputBuffer.append(index.toString())
+                    inputBuffer.append(digit)
                     updateInputDisplay()
                     lastInputTime = System.currentTimeMillis()
+                    Timber.d("📱 USSD Input: '$digit' added, buffer: '${inputBuffer}'")  
                 }
             }
         }
@@ -194,13 +198,22 @@ class USSDSimulationActivity : ComponentActivity() {
     }
     
     private fun handlePinAuthInput(input: String) {
-        if (input.length == 4 && input.all { it.isDigit() }) {
+        if (input.length != 4 || !input.all { it.isDigit() }) {
+            showMessage("Invalid PIN format. Enter 4 digits:")
+            clearInput()
+            return
+        }
+        
+        lifecycleScope.launch {
             val isAuthenticated = viewModel.verifyPinAccess(input)
             if (isAuthenticated) {
                 currentState = USSDState.MAIN_MENU
+                Timber.d("✅ USSD PIN Authentication Successful")
+            } else {
+                // PIN verification failed - stay in PIN_AUTH state
+                currentState = USSDState.PIN_AUTH
+                Timber.d("❌ USSD PIN Authentication Failed")
             }
-        } else {
-            showMessage("Invalid PIN format. Enter 4 digits:")
         }
         clearInput()
     }
@@ -270,10 +283,24 @@ class USSDSimulationActivity : ComponentActivity() {
     
     /**
      * Prevent input spam that could crash the app
+     * Also validate app state for robustness
      */
     private fun canProcessInput(): Boolean {
         val currentTime = System.currentTimeMillis()
-        return (currentTime - lastInputTime) >= INPUT_COOLDOWN_MS
+        val cooldownMet = (currentTime - lastInputTime) >= INPUT_COOLDOWN_MS
+        
+        if (!cooldownMet) {
+            Timber.d("⏳ USSD Input blocked - cooldown active")
+            return false
+        }
+        
+        // Additional validation to prevent crashes
+        if (inputBuffer.length >= MAX_INPUT_LENGTH) {
+            Timber.d("🚫 USSD Input blocked - buffer full")
+            return false
+        }
+        
+        return true
     }
     
     private fun updateInputDisplay() {
@@ -331,9 +358,21 @@ class USSDSimulationActivity : ComponentActivity() {
             try {
                 currentState = USSDState.valueOf(it)
                 Timber.d("🔄 USSD State Restored: ${currentState.name}")
+                
+                // Restore appropriate UI state
+                when (currentState) {
+                    USSDState.PIN_AUTH -> viewModel.restartPinAuthentication()
+                    USSDState.MAIN_MENU -> viewModel.showMainMenu()
+                    else -> {
+                        // For other states, return to main menu to prevent inconsistency
+                        currentState = USSDState.MAIN_MENU
+                        viewModel.showMainMenu()
+                    }
+                }
             } catch (e: IllegalArgumentException) {
                 Timber.w("❌ Invalid state name: $it, defaulting to PIN_AUTH")
                 currentState = USSDState.PIN_AUTH
+                viewModel.restartPinAuthentication()
             }
         }
         
