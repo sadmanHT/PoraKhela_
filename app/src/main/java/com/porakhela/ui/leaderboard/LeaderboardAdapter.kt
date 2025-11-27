@@ -183,7 +183,7 @@ class LeaderboardAdapter(
         }
         
         /**
-         * Animate trophy with shine effect
+         * Animate trophy with controlled shine effect
          */
         private fun animateTrophy() {
             binding.trophyIcon.scaleX = 0f
@@ -195,15 +195,19 @@ class LeaderboardAdapter(
                 .setDuration(400)
                 .setInterpolator(AccelerateDecelerateInterpolator())
                 .withEndAction {
-                    // Shine effect
-                    ValueAnimator.ofFloat(1f, 1.2f, 1f).apply {
-                        duration = 1000
-                        repeatCount = ValueAnimator.INFINITE
+                    // Limited shine effect to prevent memory leaks
+                    ValueAnimator.ofFloat(1f, 1.1f, 1f).apply {
+                        duration = 800
+                        repeatCount = 2 // Limited repeats
                         repeatMode = ValueAnimator.REVERSE
-                        addUpdateListener {
-                            val scale = it.animatedValue as Float
-                            binding.trophyIcon.scaleX = scale
-                            binding.trophyIcon.scaleY = scale
+                        addUpdateListener { animator ->
+                            if (binding.trophyIcon.isAttachedToWindow) {
+                                val scale = animator.animatedValue as Float
+                                binding.trophyIcon.scaleX = scale
+                                binding.trophyIcon.scaleY = scale
+                            } else {
+                                animator.cancel()
+                            }
                         }
                         start()
                     }
@@ -212,7 +216,7 @@ class LeaderboardAdapter(
         }
         
         /**
-         * Animate current user highlight
+         * Animate current user highlight with controlled lifecycle
          */
         private fun animateCurrentUserHighlight() {
             val drawable = binding.root.background as? GradientDrawable
@@ -222,24 +226,33 @@ class LeaderboardAdapter(
                     ContextCompat.getColor(binding.root.context, R.color.current_user_bg),
                     ContextCompat.getColor(binding.root.context, R.color.current_user_bg_highlight)
                 )
-                colorAnimation.duration = 1500
-                colorAnimation.repeatCount = ValueAnimator.INFINITE
+                colorAnimation.duration = 1200
+                colorAnimation.repeatCount = 3 // Limited repeats
                 colorAnimation.repeatMode = ValueAnimator.REVERSE
                 colorAnimation.addUpdateListener { animator ->
-                    it.setColor(animator.animatedValue as Int)
+                    if (binding.root.isAttachedToWindow) {
+                        it.setColor(animator.animatedValue as Int)
+                    } else {
+                        animator.cancel()
+                    }
                 }
                 colorAnimation.start()
             }
         }
         
         /**
-         * Animate top three shine effect
+         * Animate top three shine effect with controlled lifecycle
          */
         private fun animateTopThreeShine() {
-            val shimmerAnimation = ObjectAnimator.ofFloat(binding.root, "alpha", 1f, 0.7f, 1f)
-            shimmerAnimation.duration = 2000
-            shimmerAnimation.repeatCount = ValueAnimator.INFINITE
+            val shimmerAnimation = ObjectAnimator.ofFloat(binding.root, "alpha", 1f, 0.8f, 1f)
+            shimmerAnimation.duration = 1500
+            shimmerAnimation.repeatCount = 2 // Limited repeats
             shimmerAnimation.repeatMode = ValueAnimator.REVERSE
+            shimmerAnimation.addUpdateListener {
+                if (!binding.root.isAttachedToWindow) {
+                    shimmerAnimation.cancel()
+                }
+            }
             shimmerAnimation.start()
         }
         

@@ -53,8 +53,13 @@ class LeaderboardFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         observeViewModel()
         setupAnimations()
         
-        // Load initial data
-        viewModel.loadAllLeaderboards()
+        // Restore state or load initial data
+        if (savedInstanceState == null) {
+            viewModel.loadAllLeaderboards()
+        } else {
+            // State will be restored automatically by ViewModel
+            Timber.d("Restoring leaderboard state from savedInstanceState")
+        }
         
         Timber.d("LeaderboardFragment initialized")
     }

@@ -69,54 +69,80 @@ class LeaderboardViewModel @Inject constructor(
     }
     
     /**
-     * Load specific leaderboard type
+     * Load specific leaderboard type with proper error handling and race condition prevention
      */
     fun loadLeaderboard(type: LeaderboardType) {
         viewModelScope.launch {
             try {
+                // Prevent multiple simultaneous loads
+                if (_uiState.value.isLoading) {
+                    Timber.d("Leaderboard load already in progress for $type")
+                    return@launch
+                }
+                
                 _uiState.value = _uiState.value.copy(isLoading = true)
+                _errorMessage.value = null // Clear previous errors
                 
-                val leaderboard = leaderboardRepository.getLeaderboard(type)
-                updateLeaderboardData(type, leaderboard)
+                val leaderboard = leaderboardRepository.getLeaderboard(type, forceRefresh = false)
                 
-                // Update current user rank
-                val userRank = leaderboard.find { it.isCurrentUser }?.rank
-                _currentUserRank.value = userRank
+                // Validate data before updating
+                if (leaderboard.isNotEmpty()) {
+                    updateLeaderboardData(type, leaderboard)
+                    
+                    // Update current user rank
+                    val userRank = leaderboard.find { it.isCurrentUser }?.rank
+                    _currentUserRank.value = userRank
+                    
+                    Timber.d("Successfully loaded $type leaderboard with ${leaderboard.size} entries")
+                } else {
+                    _errorMessage.value = "No leaderboard data available"
+                }
                 
                 _uiState.value = _uiState.value.copy(isLoading = false)
-                
-                Timber.d("Loaded $type leaderboard with ${leaderboard.size} entries")
                 
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(isLoading = false)
-                _errorMessage.value = "Failed to load leaderboard: ${e.message}"
+                _errorMessage.value = "Failed to load leaderboard: ${e.localizedMessage}"
                 Timber.e(e, "Failed to load $type leaderboard")
             }
         }
     }
     
     /**
-     * Refresh specific leaderboard with pull-to-refresh
+     * Refresh specific leaderboard with pull-to-refresh and improved error handling
      */
     fun refreshLeaderboard(type: LeaderboardType) {
         viewModelScope.launch {
             try {
+                // Prevent multiple simultaneous refreshes
+                if (_uiState.value.isRefreshing) {
+                    Timber.d("Refresh already in progress for $type")
+                    return@launch
+                }
+                
                 _uiState.value = _uiState.value.copy(isRefreshing = true)
+                _errorMessage.value = null // Clear previous errors
                 
                 val leaderboard = leaderboardRepository.simulatePullToRefresh(type)
-                updateLeaderboardData(type, leaderboard)
                 
-                // Update current user rank
-                val userRank = leaderboard.find { it.isCurrentUser }?.rank
-                _currentUserRank.value = userRank
+                // Validate refreshed data
+                if (leaderboard.isNotEmpty()) {
+                    updateLeaderboardData(type, leaderboard)
+                    
+                    // Update current user rank
+                    val userRank = leaderboard.find { it.isCurrentUser }?.rank
+                    _currentUserRank.value = userRank
+                    
+                    Timber.d("Successfully refreshed $type leaderboard with ${leaderboard.size} entries")
+                } else {
+                    _errorMessage.value = "No data received from refresh"
+                }
                 
                 _uiState.value = _uiState.value.copy(isRefreshing = false)
-                
-                Timber.d("Refreshed $type leaderboard with ${leaderboard.size} entries")
                 
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(isRefreshing = false)
-                _errorMessage.value = "Failed to refresh leaderboard: ${e.message}"
+                _errorMessage.value = "Failed to refresh: ${e.localizedMessage}"
                 Timber.e(e, "Failed to refresh $type leaderboard")
             }
         }

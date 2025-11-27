@@ -83,19 +83,19 @@ public final class LeaderboardAdapter extends androidx.recyclerview.widget.ListA
         }
         
         /**
-         * Animate trophy with shine effect
+         * Animate trophy with controlled shine effect
          */
         private final void animateTrophy() {
         }
         
         /**
-         * Animate current user highlight
+         * Animate current user highlight with controlled lifecycle
          */
         private final void animateCurrentUserHighlight() {
         }
         
         /**
-         * Animate top three shine effect
+         * Animate top three shine effect with controlled lifecycle
          */
         private final void animateTopThreeShine() {
         }

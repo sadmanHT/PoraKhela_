@@ -6,112 +6,133 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.porakhela.data.models.LeaderboardEntry
 import com.porakhela.data.models.LeaderboardType
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import timber.log.Timber
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Manages leaderboard caching with automatic expiration
- * Handles weekly (reset Sunday 12:00 AM) and monthly (reset first day of month) cache lifecycle
+ * Thread-safe cache implementation for leaderboard data with automatic expiration
+ * Supports Weekly, Monthly, and Global leaderboard types with proper lifecycle management
  */
 @Singleton
-class LeaderboardCache @Inject constructor(context: Context) {
-    
-    private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-    private val gson = Gson()
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-    
+class LeaderboardCache @Inject constructor(
+    @ApplicationContext context: Context
+) {
     companion object {
-        private const val PREFS_NAME = "leaderboard_cache"
-        private const val KEY_WEEKLY_CACHE = "leaderboard_weekly_cache"
-        private const val KEY_MONTHLY_CACHE = "leaderboard_monthly_cache"
-        private const val KEY_GLOBAL_CACHE = "leaderboard_global_cache"
-        private const val KEY_WEEKLY_LAST_UPDATE = "weekly_last_update"
-        private const val KEY_MONTHLY_LAST_UPDATE = "monthly_last_update"
-        private const val KEY_GLOBAL_LAST_UPDATE = "global_last_update"
+        private const val CACHE_PREFS = "leaderboard_cache"
+        private const val WEEKLY_DATA_KEY = "weekly_data"
+        private const val MONTHLY_DATA_KEY = "monthly_data"
+        private const val GLOBAL_DATA_KEY = "global_data"
+        private const val WEEKLY_TIMESTAMP_KEY = "weekly_timestamp"
+        private const val MONTHLY_TIMESTAMP_KEY = "monthly_timestamp"
+        private const val GLOBAL_TIMESTAMP_KEY = "global_timestamp"
+        
+        // Cache expiration times
+        private const val GLOBAL_CACHE_DURATION = 4 * 60 * 60 * 1000L // 4 hours
+        private const val WEEKLY_CACHE_DURATION = 24 * 60 * 60 * 1000L // 24 hours
+        private const val MONTHLY_CACHE_DURATION = 7 * 24 * 60 * 60 * 1000L // 7 days
     }
     
+    private val prefs: SharedPreferences = context.getSharedPreferences(CACHE_PREFS, Context.MODE_PRIVATE)
+    private val gson = Gson()
+    private val cacheMutex = Mutex() // Thread safety
+
     /**
-     * Cache leaderboard data with automatic expiration handling
+     * Cache leaderboard data with thread safety
      */
-    fun cacheLeaderboard(type: LeaderboardType, entries: List<LeaderboardEntry>) {
-        val (cacheKey, updateKey) = getKeys(type)
-        val currentTime = System.currentTimeMillis()
-        
-        try {
-            val json = gson.toJson(entries)
-            prefs.edit()
-                .putString(cacheKey, json)
-                .putLong(updateKey, currentTime)
-                .apply()
-            
-            Timber.d("Cached ${entries.size} entries for $type leaderboard")
-        } catch (e: Exception) {
-            Timber.e(e, "Failed to cache leaderboard data for $type")
-        }
-    }
-    
-    /**
-     * Get cached leaderboard data if not expired
-     */
-    fun getCachedLeaderboard(type: LeaderboardType): List<LeaderboardEntry>? {
-        if (isCacheExpired(type)) {
-            clearCache(type)
-            return null
-        }
-        
-        val (cacheKey, _) = getKeys(type)
-        val json = prefs.getString(cacheKey, null) ?: return null
-        
-        return try {
-            val listType = object : TypeToken<List<LeaderboardEntry>>() {}.type
-            val entries: List<LeaderboardEntry> = gson.fromJson(json, listType)
-            Timber.d("Retrieved ${entries.size} cached entries for $type leaderboard")
-            entries
-        } catch (e: Exception) {
-            Timber.e(e, "Failed to parse cached leaderboard data for $type")
-            clearCache(type)
-            null
+    suspend fun cacheLeaderboard(type: LeaderboardType, data: List<LeaderboardEntry>) {
+        cacheMutex.withLock {
+            try {
+                val json = gson.toJson(data)
+                val timestamp = System.currentTimeMillis()
+                
+                prefs.edit()
+                    .putString(getDataKey(type), json)
+                    .putLong(getTimestampKey(type), timestamp)
+                    .apply()
+                
+                Timber.d("Cached ${data.size} entries for $type leaderboard")
+            } catch (e: Exception) {
+                Timber.e(e, "Failed to cache leaderboard data for $type")
+                clearCacheForType(type)
+            }
         }
     }
     
     /**
-     * Check if cache is expired based on leaderboard type
+     * Get cached leaderboard data if valid and not expired
      */
-    fun isCacheExpired(type: LeaderboardType): Boolean {
-        val (_, updateKey) = getKeys(type)
-        val lastUpdate = prefs.getLong(updateKey, 0)
-        
-        if (lastUpdate == 0L) return true
-        
-        val lastUpdateCalendar = Calendar.getInstance().apply {
-            timeInMillis = lastUpdate
+    suspend fun getCachedLeaderboard(type: LeaderboardType): List<LeaderboardEntry>? {
+        return cacheMutex.withLock {
+            try {
+                if (!isCacheValid(type)) {
+                    clearCacheForType(type)
+                    return@withLock null
+                }
+                
+                val json = prefs.getString(getDataKey(type), null) ?: return@withLock null
+                val typeToken = object : TypeToken<List<LeaderboardEntry>>() {}.type
+                val result = gson.fromJson<List<LeaderboardEntry>>(json, typeToken)
+                
+                Timber.d("Retrieved ${result?.size ?: 0} cached entries for $type leaderboard")
+                result
+            } catch (e: Exception) {
+                Timber.e(e, "Failed to retrieve cached data for $type")
+                clearCacheForType(type)
+                null
+            }
         }
+    }
+    
+    /**
+     * Check if cache is valid and not expired with improved logic
+     */
+    private fun isCacheValid(type: LeaderboardType): Boolean {
+        val timestamp = prefs.getLong(getTimestampKey(type), 0)
+        if (timestamp == 0L) return false
+        
+        val now = System.currentTimeMillis()
         
         return when (type) {
-            LeaderboardType.WEEKLY -> isWeeklyExpired(lastUpdateCalendar)
-            LeaderboardType.MONTHLY -> isMonthlyExpired(lastUpdateCalendar)
-            LeaderboardType.GLOBAL -> isGlobalExpired(lastUpdateCalendar)
+            LeaderboardType.WEEKLY -> {
+                // Weekly cache expires on Sunday at midnight OR after 24 hours
+                val weekStart = getWeekStart(now)
+                val cacheWeekStart = getWeekStart(timestamp)
+                val withinTimeLimit = (now - timestamp) < WEEKLY_CACHE_DURATION
+                
+                weekStart == cacheWeekStart && withinTimeLimit
+            }
+            LeaderboardType.MONTHLY -> {
+                // Monthly cache expires on first day of month OR after 7 days
+                val monthStart = getMonthStart(now)
+                val cacheMonthStart = getMonthStart(timestamp)
+                val withinTimeLimit = (now - timestamp) < MONTHLY_CACHE_DURATION
+                
+                monthStart == cacheMonthStart && withinTimeLimit
+            }
+            LeaderboardType.GLOBAL -> {
+                // Global cache expires after 4 hours
+                (now - timestamp) < GLOBAL_CACHE_DURATION
+            }
         }
     }
     
     /**
-     * Clear cache for specific leaderboard type
+     * Clear cache for specific type
      */
-    fun clearCache(type: LeaderboardType) {
-        val (cacheKey, updateKey) = getKeys(type)
+    private fun clearCacheForType(type: LeaderboardType) {
         prefs.edit()
-            .remove(cacheKey)
-            .remove(updateKey)
+            .remove(getDataKey(type))
+            .remove(getTimestampKey(type))
             .apply()
-        
-        Timber.d("Cleared cache for $type leaderboard")
     }
     
     /**
-     * Clear all leaderboard caches
+     * Clear all cached data
      */
     fun clearAllCaches() {
         prefs.edit().clear().apply()
@@ -119,99 +140,54 @@ class LeaderboardCache @Inject constructor(context: Context) {
     }
     
     /**
-     * Get cache keys for leaderboard type
+     * Get cache status for debugging
      */
-    private fun getKeys(type: LeaderboardType): Pair<String, String> {
+    fun getCacheStatus(): String {
+        val weekly = if (isCacheValid(LeaderboardType.WEEKLY)) "Valid" else "Expired"
+        val monthly = if (isCacheValid(LeaderboardType.MONTHLY)) "Valid" else "Expired"
+        val global = if (isCacheValid(LeaderboardType.GLOBAL)) "Valid" else "Expired"
+        
+        return "Weekly: $weekly, Monthly: $monthly, Global: $global"
+    }
+    
+    /**
+     * Helper methods
+     */
+    private fun getDataKey(type: LeaderboardType): String {
         return when (type) {
-            LeaderboardType.WEEKLY -> KEY_WEEKLY_CACHE to KEY_WEEKLY_LAST_UPDATE
-            LeaderboardType.MONTHLY -> KEY_MONTHLY_CACHE to KEY_MONTHLY_LAST_UPDATE
-            LeaderboardType.GLOBAL -> KEY_GLOBAL_CACHE to KEY_GLOBAL_LAST_UPDATE
+            LeaderboardType.WEEKLY -> WEEKLY_DATA_KEY
+            LeaderboardType.MONTHLY -> MONTHLY_DATA_KEY
+            LeaderboardType.GLOBAL -> GLOBAL_DATA_KEY
         }
     }
     
-    /**
-     * Check if weekly cache is expired (reset Sunday 12:00 AM)
-     */
-    private fun isWeeklyExpired(lastUpdate: Calendar): Boolean {
-        val now = Calendar.getInstance()
-        val nextSunday = Calendar.getInstance().apply {
-            set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-            
-            // If today is Sunday and it's past midnight, move to next Sunday
-            if (now.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY && now.timeInMillis > this.timeInMillis) {
-                add(Calendar.WEEK_OF_YEAR, 1)
-            }
-            
-            // If we're past Sunday, move to next Sunday
-            if (now.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
-                add(Calendar.WEEK_OF_YEAR, 1)
-            }
+    private fun getTimestampKey(type: LeaderboardType): String {
+        return when (type) {
+            LeaderboardType.WEEKLY -> WEEKLY_TIMESTAMP_KEY
+            LeaderboardType.MONTHLY -> MONTHLY_TIMESTAMP_KEY
+            LeaderboardType.GLOBAL -> GLOBAL_TIMESTAMP_KEY
         }
-        
-        return now.timeInMillis >= nextSunday.timeInMillis || lastUpdate.timeInMillis < getLastSundayMidnight()
     }
     
-    /**
-     * Check if monthly cache is expired (reset first day of month)
-     */
-    private fun isMonthlyExpired(lastUpdate: Calendar): Boolean {
-        val now = Calendar.getInstance()
-        val firstOfThisMonth = Calendar.getInstance().apply {
-            set(Calendar.DAY_OF_MONTH, 1)
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }
-        
-        return lastUpdate.timeInMillis < firstOfThisMonth.timeInMillis
-    }
-    
-    /**
-     * Check if global cache is expired (refresh every 4 hours)
-     */
-    private fun isGlobalExpired(lastUpdate: Calendar): Boolean {
-        val now = Calendar.getInstance()
-        val fourHoursAgo = Calendar.getInstance().apply {
-            add(Calendar.HOUR_OF_DAY, -4)
-        }
-        
-        return lastUpdate.timeInMillis < fourHoursAgo.timeInMillis
-    }
-    
-    /**
-     * Get last Sunday midnight timestamp
-     */
-    private fun getLastSundayMidnight(): Long {
-        val calendar = Calendar.getInstance().apply {
-            set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-            
-            // If today is not Sunday, go back to last Sunday
-            val today = Calendar.getInstance()
-            if (today.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
-                add(Calendar.WEEK_OF_YEAR, -1)
-            }
-        }
-        
+    private fun getWeekStart(timestamp: Long): Long {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timestamp
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
         return calendar.timeInMillis
     }
     
-    /**
-     * Get cache status information for debugging
-     */
-    fun getCacheStatus(): String {
-        val weekly = if (isCacheExpired(LeaderboardType.WEEKLY)) "EXPIRED" else "VALID"
-        val monthly = if (isCacheExpired(LeaderboardType.MONTHLY)) "EXPIRED" else "VALID"
-        val global = if (isCacheExpired(LeaderboardType.GLOBAL)) "EXPIRED" else "VALID"
-        
-        return "Weekly: $weekly, Monthly: $monthly, Global: $global"
+    private fun getMonthStart(timestamp: Long): Long {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timestamp
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.timeInMillis
     }
 }

@@ -39,28 +39,30 @@ class LeaderboardRepository @Inject constructor(
     }
     
     /**
-     * Get leaderboard data with caching and refresh mechanism
+     * Get leaderboard data with thread-safe caching and refresh mechanism
      */
     suspend fun getLeaderboard(type: LeaderboardType, forceRefresh: Boolean = false): List<LeaderboardEntry> {
         // Check cache first if not forcing refresh
         if (!forceRefresh) {
             val cachedData = leaderboardCache.getCachedLeaderboard(type)
-            if (cachedData != null) {
-                Timber.d("Returning cached leaderboard for $type")
+            if (cachedData != null && cachedData.isNotEmpty()) {
+                Timber.d("Returning cached leaderboard for $type with ${cachedData.size} entries")
                 return cachedData
             }
         }
         
-        // Simulate network delay for realistic feel
-        delay(1000 + Random.nextLong(500))
+        // Simulate realistic network delay
+        delay(800 + Random.nextLong(400))
         
         // Generate fresh data
         val leaderboardData = generateLeaderboardData(type)
         
-        // Cache the data
-        leaderboardCache.cacheLeaderboard(type, leaderboardData)
+        // Cache the data with thread safety
+        if (leaderboardData.isNotEmpty()) {
+            leaderboardCache.cacheLeaderboard(type, leaderboardData)
+        }
         
-        Timber.d("Generated and cached fresh leaderboard for $type")
+        Timber.d("Generated and cached fresh leaderboard for $type with ${leaderboardData.size} entries")
         return leaderboardData
     }
     
@@ -127,17 +129,35 @@ class LeaderboardRepository @Inject constructor(
             )
         )
         
-        // Sort by points and assign ranks
-        val sortedEntries = mockEntries.sortedByDescending { it.points }
+        // Sort by points (descending) and assign ranks with proper tie-breaking
+        val sortedEntries = mockEntries.sortedWith(
+            compareByDescending<LeaderboardEntry> { it.points }
+                .thenBy { it.childName } // Tie-breaker: alphabetical order
+        )
+        
+        // Assign ranks properly, handling ties
+        var currentRank = 1
+        var previousPoints = Int.MAX_VALUE
+        var sameRankCount = 0
         
         return sortedEntries.mapIndexed { index, entry ->
-            val rank = index + 1
-            val previousRank = if (forceRefresh) rank + Random.nextInt(-3, 4).coerceAtLeast(1) else rank
+            if (entry.points != previousPoints) {
+                currentRank = index + 1
+                sameRankCount = 0
+            } else {
+                sameRankCount++
+            }
+            previousPoints = entry.points
+            
+            val previousRank = if (forceRefresh) {
+                val change = Random.nextInt(-2, 3)
+                (currentRank + change).coerceAtLeast(1).coerceAtMost(LEADERBOARD_SIZE)
+            } else currentRank
             
             entry.copy(
-                rank = rank,
+                rank = currentRank,
                 previousRank = previousRank,
-                rankChange = previousRank - rank
+                rankChange = previousRank - currentRank
             )
         }
     }

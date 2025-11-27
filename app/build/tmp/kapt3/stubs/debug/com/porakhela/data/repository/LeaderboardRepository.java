@@ -28,7 +28,7 @@ public final class LeaderboardRepository {
     }
     
     /**
-     * Get leaderboard data with caching and refresh mechanism
+     * Get leaderboard data with thread-safe caching and refresh mechanism
      */
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getLeaderboard(@org.jetbrains.annotations.NotNull()

@@ -74,14 +74,14 @@ public final class LeaderboardViewModel extends androidx.lifecycle.ViewModel {
     }
     
     /**
-     * Load specific leaderboard type
+     * Load specific leaderboard type with proper error handling and race condition prevention
      */
     public final void loadLeaderboard(@org.jetbrains.annotations.NotNull()
     com.porakhela.data.models.LeaderboardType type) {
     }
     
     /**
-     * Refresh specific leaderboard with pull-to-refresh
+     * Refresh specific leaderboard with pull-to-refresh and improved error handling
      */
     public final void refreshLeaderboard(@org.jetbrains.annotations.NotNull()
     com.porakhela.data.models.LeaderboardType type) {
