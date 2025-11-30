@@ -8,10 +8,26 @@ import com.porakhela.data.local.UserPreferences
 import com.porakhela.data.local.StreakPreferences
 import com.porakhela.data.local.LeaderboardCache
 import com.porakhela.data.local.dao.RewardDao
+import com.porakhela.data.local.dao.SecurityEventDao
+import com.porakhela.data.dao.NotificationEventDao
 import com.porakhela.data.repository.LeaderboardRepository
 import com.porakhela.data.tracking.TimeTracker
 import com.porakhela.data.tracking.StreakManager
-import com.porakhela.core.notifications.StreakNotificationScheduler
+import com.porakhela.domain.analytics.AnalyticsService
+import com.porakhela.domain.gamification.ExperimentsManager
+import com.porakhela.domain.gamification.RulesValidator
+import com.porakhela.security.RateLimitManager
+import com.porakhela.security.SecurityService
+import com.porakhela.ui.performance.DatabaseOptimizer
+import com.porakhela.ui.performance.BatchDatabaseOperations
+import com.porakhela.ui.performance.DatabaseQueryCache
+import com.porakhela.ui.performance.OptimizedCoroutineManager
+import com.porakhela.ui.performance.DebouncedOperationManager
+import com.porakhela.ui.performance.BackgroundTaskScheduler
+import com.porakhela.ui.performance.ObjectPoolManager
+import com.porakhela.ui.performance.MemoryEfficientTransformations
+import com.porakhela.ui.performance.RecyclerViewGCOptimizer
+import com.porakhela.ui.performance.monitoring.PerformanceMonitoringSystem
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,14 +51,17 @@ object DataModule {
     
     @Provides
     @Singleton
-    fun provideParentDashboardDatabase(@ApplicationContext context: Context): ParentDashboardDatabase {
-        return Room.databaseBuilder(
-            context.applicationContext,
-            ParentDashboardDatabase::class.java,
-            "parent_dashboard_database"
-        )
-        .fallbackToDestructiveMigration()
-        .build()
+    fun provideDatabaseOptimizer(): DatabaseOptimizer {
+        return DatabaseOptimizer()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideParentDashboardDatabase(
+        @ApplicationContext context: Context,
+        databaseOptimizer: DatabaseOptimizer
+    ): ParentDashboardDatabase {
+        return databaseOptimizer.createOptimizedDatabase(context)
     }
     
     @Provides
@@ -53,6 +72,92 @@ object DataModule {
     @Provides
     fun provideRewardDao(database: ParentDashboardDatabase): RewardDao {
         return database.rewardDao()
+    }
+    
+    @Provides
+    fun provideRewardLedgerDao(database: ParentDashboardDatabase): com.porakhela.data.local.dao.RewardLedgerDao {
+        return database.rewardLedgerDao()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideBatchDatabaseOperations(database: ParentDashboardDatabase): BatchDatabaseOperations {
+        return BatchDatabaseOperations(database)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideDatabaseQueryCache(): DatabaseQueryCache {
+        return DatabaseQueryCache()
+    }
+    
+    // ================================
+    // THREADING & COROUTINE OPTIMIZATION
+    // ================================
+    
+    @Provides
+    @Singleton
+    fun provideOptimizedCoroutineManager(): OptimizedCoroutineManager {
+        return OptimizedCoroutineManager()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideDebouncedOperationManager(
+        coroutineManager: OptimizedCoroutineManager
+    ): DebouncedOperationManager {
+        return DebouncedOperationManager(coroutineManager)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideBackgroundTaskScheduler(
+        optimizedCoroutineManager: OptimizedCoroutineManager
+    ): BackgroundTaskScheduler {
+        return BackgroundTaskScheduler(optimizedCoroutineManager)
+    }
+
+    // GARBAGE COLLECTION OPTIMIZATION COMPONENTS
+    @Provides
+    @Singleton
+    fun provideObjectPoolManager(): ObjectPoolManager {
+        return ObjectPoolManager()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMemoryEfficientTransformations(
+        objectPoolManager: ObjectPoolManager
+    ): MemoryEfficientTransformations {
+        return MemoryEfficientTransformations(objectPoolManager)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRecyclerViewGCOptimizer(
+        objectPoolManager: ObjectPoolManager
+    ): RecyclerViewGCOptimizer {
+        return RecyclerViewGCOptimizer(objectPoolManager)
+    }
+
+    // PERFORMANCE MONITORING SYSTEM
+    @Provides
+    @Singleton
+    fun providePerformanceMonitoringSystem(
+        @ApplicationContext context: Context,
+        objectPoolManager: ObjectPoolManager
+    ): PerformanceMonitoringSystem {
+        return PerformanceMonitoringSystem(context, objectPoolManager)
+    }
+    
+    @Provides
+    fun provideGamificationEventDao(database: ParentDashboardDatabase): com.porakhela.data.dao.GamificationEventDao {
+        return database.gamificationEventDao()
+    }
+    
+    @Provides
+    fun provideNotificationEventDao(database: ParentDashboardDatabase): NotificationEventDao {
+        return database.notificationEventDao()
     }
     
     @Provides
@@ -75,12 +180,6 @@ object DataModule {
     
     @Provides
     @Singleton
-    fun provideStreakNotificationScheduler(@ApplicationContext context: Context): StreakNotificationScheduler {
-        return StreakNotificationScheduler(context)
-    }
-    
-    @Provides
-    @Singleton
     fun provideLeaderboardCache(@ApplicationContext context: Context): LeaderboardCache {
         return LeaderboardCache(context)
     }
@@ -92,5 +191,47 @@ object DataModule {
         userPreferences: UserPreferences
     ): LeaderboardRepository {
         return LeaderboardRepository(leaderboardCache, userPreferences)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideExperimentsManager(@ApplicationContext context: Context): ExperimentsManager {
+        return ExperimentsManager(context)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideRulesValidator(@ApplicationContext context: Context): RulesValidator {
+        return RulesValidator(context)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideAnalyticsService(
+        database: ParentDashboardDatabase,
+        userPreferences: UserPreferences
+    ): AnalyticsService {
+        return AnalyticsService(database.analyticsEventDao(), userPreferences)
+    }
+    
+    @Provides
+    fun provideSecurityEventDao(database: ParentDashboardDatabase): SecurityEventDao {
+        return database.securityEventDao()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideRateLimitManager(@ApplicationContext context: Context): RateLimitManager {
+        return RateLimitManager(context)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideSecurityService(
+        @ApplicationContext context: Context,
+        rateLimitManager: RateLimitManager,
+        database: ParentDashboardDatabase
+    ): SecurityService {
+        return SecurityService(context, rateLimitManager, database)
     }
 }
