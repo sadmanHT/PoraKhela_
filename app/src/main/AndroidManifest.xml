@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="32" />
     
     <!-- Optional permissions for future features -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -14,7 +18,7 @@
 
     <application
         android:name=".PorakhelaApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -25,30 +29,22 @@
         android:hardwareAccelerated="true"
         tools:targetApi="31">
         
-        <!-- Splash Activity -->
+        <!-- Main Activity - Ledger Test Launcher -->
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Porakhela.Splash"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <!-- Main Activity -->
+        <!-- Ledger Test Activity -->
         <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustPan" />
-            
-        <!-- Rewards Center Activity -->
-        <activity
-            android:name=".ui.rewards.RewardsCenterActivity"
+            android:name=".ui.ledger.LedgerTestActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
@@ -61,9 +57,7 @@
             android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
             android:screenOrientation="portrait"
-            android:launchMode="singleTop"
             android:theme="@style/Theme.Porakhela.NoActionBar"
             android:parentActivityName=".ui.main.MainActivity" />
             
@@ -75,14 +69,25 @@
             android:launchMode="singleTop"
             android:parentActivityName=".ui.main.MainActivity" />
             
-        <!-- Onboarding Activity (if needed separately) -->
+        <!-- OTP Send Activity -->
         <activity
-            android:name=".ui.onboarding.OnboardingActivity"
+            android:name=".ui.otp.OtpSendActivity"
             android:exported="false"
             android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Porakhela" />
+            android:parentActivityName=".ui.main.MainActivity" />
+            
+        <!-- OTP Verify Activity -->
+        <activity
+            android:name=".ui.otp.OtpVerifyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:parentActivityName=".ui.otp.OtpSendActivity" />
             
         <!-- Parent Dashboard Activity -->
         <activity
@@ -93,6 +98,108 @@
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.Porakhela"
             android:label="@string/parent_dashboard" />
+            
+        <!-- Accessibility Settings Activity -->
+        <activity
+            android:name=".ui.settings.AccessibilitySettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.Porakhela"
+            android:label="@string/accessibility_settings"
+            android:parentActivityName=".ui.main.MainActivity" />
+            
+        <!-- FCM Debug Activity (Debug builds only) -->
+        <activity
+            android:name=".debug.FCMDebugActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:label="FCM Debug Console"
+            android:theme="@style/Theme.Porakhela">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="porakhela" android:host="fcm-debug" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Analytics Test Activity (Debug builds only) -->
+        <activity
+            android:name=".debug.AnalyticsTestActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:label="Analytics Test Console"
+            android:theme="@style/Theme.Porakhela"
+            android:parentActivityName=".ui.main.MainActivity" />
+            
+        <!-- Crash Test Activity (Debug builds only) -->
+        <activity
+            android:name=".debug.CrashTestActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:label="Crash Test Console"
+            android:theme="@style/Theme.Porakhela"
+            android:parentActivityName=".ui.main.MainActivity" />
+            
+        <!-- Firebase Service -->
+        <service
+            android:name=".core.notifications.PorakhelaFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        
+        <!-- Performance Testing Activities -->
+        <activity
+            android:name=".ui.performance.testing.PerformanceTestActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:label="Performance Test Suite"
+            android:theme="@style/Theme.Porakhela.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".ui.performance.testing.EmulatorTestActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:label="Emulator Performance Tests"
+            android:theme="@style/Theme.Porakhela.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!-- File Provider for sharing PDFs -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+        
+        <!-- Default notification icon and color -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/primary_blue" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="daily_learning_reminder" />
 
     </application>
 

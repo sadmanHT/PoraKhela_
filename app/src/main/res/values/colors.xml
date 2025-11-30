@@ -22,6 +22,17 @@
     <color name="warning_orange">#FF9800</color>
     <color name="error_red">#F44336</color>
     
+    <!-- Notification colors -->
+    <color name="notification_normal_bg">#FFFFFF</color>
+    <color name="notification_high_priority_bg">#FFF3E0</color>
+    <color name="notification_border">#E0E0E0</color>
+    <color name="notification_icon_bg">#F5F5F5</color>
+    
+    <!-- Event specific colors -->
+    <color name="reward_gold">#FFD700</color>
+    <color name="streak_orange">#FF5722</color>
+    <color name="goal_blue">#2196F3</color>
+    
     <!-- Material3 System colors -->
     <color name="primary">#3A7DFF</color>
     <color name="primary_variant">#2C5FCC</color>
@@ -79,8 +90,10 @@
     <color name="background_primary">#FAFAFA</color>
     <color name="background_light">#FAFAFA</color>
     <color name="background_secondary">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
     <color name="background_disabled">#E0E0E0</color>
     <color name="border_color">#E0E0E0</color>
+    <color name="divider_color">#E0E0E0</color>
     <color name="timer_color">#FF9800</color>
     <color name="overlay_background">#80000000</color>
     
@@ -141,4 +154,94 @@
     <color name="progress_track">#E0E0E0</color>
     
     <color name="secondary_color">#FFCA28</color>
+    
+    <!-- Missing colors referenced by drawables and layouts -->
+    <color name="primary_orange">#FF9800</color>
+    <color name="primary_green">#4CAF50</color>
+    <color name="secondary_yellow">#FFCA28</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="rank_up_green">#4CAF50</color>
+    <color name="rank_down_red">#F44336</color>
+    <color name="download_item_background">#FFFFFF</color>
+    <color name="error_background">#FFEBEE</color>
+    
+    <!-- Reward Ledger Status and Background Colors -->
+    <color name="info_background">#E3F2FD</color>
+    <color name="info_border">#2196F3</color>
+    <color name="info_blue">#2196F3</color>
+    <color name="warning_background">#FFF3E0</color>
+    <color name="warning_border">#FF9800</color>
+    <color name="error_border">#F44336</color>
+    <color name="success_background">#E8F5E8</color>
+    <color name="success_border">#4CAF50</color>
+    <color name="accent_teal">#009688</color>
+    
+    <!-- Missing colors for UI components -->
+    <color name="text_hint">#9E9E9E</color>
+    
+    <!-- SMS specific colors -->
+    <color name="success_light">#E8F5E8</color>
+    <color name="warning_light">#FFF3E0</color>
+    <color name="warning_color">#FF9800</color>
+    
+    <!-- Additional AppLink demo colors -->
+    <color name="success_variant">#388E3C</color>
+    <color name="on_surface_variant">#757575</color>
+    <color name="text_accent">#FFFFFF</color>
+    
+    <!-- Accessibility colors for WCAG compliance -->
+    <color name="accessibility_focus_color">#FF6B00</color>
+    <color name="accessibility_switch_thumb">#4CAF50</color>
+    <color name="accessibility_switch_track">#E8F5E8</color>
+    <color name="accessibility_switch_border">#4CAF50</color>
+    
+    <!-- Card and background colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_border">#E0E0E0</color>
+    
+    <!-- Spinner colors -->
+    <color name="spinner_background">#FFFFFF</color>
+    <color name="spinner_border">#3A7DFF</color>
+    
+    <!-- Preview section colors -->
+    <color name="preview_background">#F9F9F9</color>
+    <color name="preview_border">#DCDCDC</color>
+    
+    <!-- Button colors for accessibility -->
+    <color name="primary_button_background">#3A7DFF</color>
+    <color name="primary_button_pressed">#2C5FCC</color>
+    <color name="primary_button_focused">#6B99FF</color>
+    <color name="primary_button_border">#2C5FCC</color>
+    <color name="button_text">#FFFFFF</color>
+    
+    <!-- Dyslexia-friendly colors (high contrast) -->
+    <color name="dyslexia_text_color">#000000</color>
+    <color name="dyslexia_background_color">#FFFBF0</color>
+    <color name="dyslexia_accent_color">#0066CC</color>
+    
+    <!-- Colorblind-friendly colors -->
+    <!-- Protanopia (red-green colorblindness type 1) -->
+    <color name="protanopia_primary">#0066CC</color>
+    <color name="protanopia_secondary">#FFB300</color>
+    <color name="protanopia_success">#4A90E2</color>
+    <color name="protanopia_error">#B83DBA</color>
+    
+    <!-- Deuteranopia (red-green colorblindness type 2) -->
+    <color name="deuteranopia_primary">#005299</color>
+    <color name="deuteranopia_secondary">#FF8C00</color>
+    <color name="deuteranopia_success">#3A7BD5</color>
+    <color name="deuteranopia_error">#A833B9</color>
+    
+    <!-- Tritanopia (blue-yellow colorblindness) -->
+    <color name="tritanopia_primary">#E74C3C</color>
+    <color name="tritanopia_secondary">#2ECC71</color>
+    <color name="tritanopia_success">#27AE60</color>
+    <color name="tritanopia_error">#C0392B</color>
+    
+    <!-- High contrast colors for accessibility -->
+    <color name="high_contrast_text">#000000</color>
+    <color name="high_contrast_background">#FFFFFF</color>
+    <color name="high_contrast_border">#000000</color>
+    <color name="high_contrast_accent">#0000FF</color>
+    
 </resources>
